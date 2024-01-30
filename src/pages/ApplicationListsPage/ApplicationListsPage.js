@@ -4,7 +4,7 @@ import "./ApplicationListsPage.scss";
 const ApplicationListPage = () => {
   const { hasApplication, setHasApplication } = useState(false);
 
-  if (hasApplication) {
+  if (!hasApplication) {
     return (
       <article>
         <h1>Job Application Lists</h1>
