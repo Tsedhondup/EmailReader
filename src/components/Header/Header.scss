@@ -1,0 +1,20 @@
+.header {
+  &__content {
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    .header-logo-container {
+      text-decoration: none;
+      // &__logo {
+      //   text-decoration: none;
+      // }
+    }
+    .header-button-container {
+      &__button {
+        height: 40px;
+      }
+    }
+  }
+}
