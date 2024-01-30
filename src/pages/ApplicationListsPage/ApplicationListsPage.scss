@@ -1,0 +1,13 @@
+.application-table {
+  padding: 0px 16px;
+  // header
+  &__header {
+    color: red;
+  }
+
+  // application-items
+  .application {
+    display: flex;
+    justify-content: space-between;
+  }
+}

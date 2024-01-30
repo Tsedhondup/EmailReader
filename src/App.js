@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ApplicationListsPage from "./pages/ApplicationListsPage/ApplicationListsPage";
 import ApplicationDetailPage from "./pages/ApplicationDetailPage/ApplicationDetailPage";
+import AddApplication from "./pages/AddApplication/AddApplication";
 import EmailDetailPage from "./pages/EmailDetailPage/EmailDetailPage";
 import ScheduleInterviewPage from "./pages/ScheduleInterviewPage/ScheduleInterviewPage";
 import InterviewListsPage from "./pages/InterviewListsPage/InterviewListsPage";
@@ -20,6 +21,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/addApplication" element={<AddApplication />} />
           <Route path="/applicationLists" element={<ApplicationListsPage />} />
           <Route
             path="/applicationDetail/:id"

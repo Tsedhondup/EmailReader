@@ -2,7 +2,7 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <setcion className="header">
+    <section className="header">
       <div className="header__content">
         <div>
           <Link className="header-logo-container">
@@ -17,7 +17,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-    </setcion>
+    </section>
   );
 };
 export default Header;
