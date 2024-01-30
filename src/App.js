@@ -12,10 +12,12 @@ import InterviewListsPage from "./pages/InterviewListsPage/InterviewListsPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import Header from "./components/Header/Header";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/applicationLists" element={<ApplicationListsPage />} />
