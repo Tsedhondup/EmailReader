@@ -19,10 +19,16 @@ const EmailDetailPage = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
+  }, [id]);
+  if (!hasLoaded) {
+    return (
+      <div className="loader">
+        <h1 className="loadder__header">Loading....</h1>
+      </div>
+    );
+  }
   if (hasLoaded) {
-    return <iframe src={emailURL}></iframe>;
+    return <iframe src={emailURL} title="Fetched email detail"></iframe>;
   }
 };
 export default EmailDetailPage;
