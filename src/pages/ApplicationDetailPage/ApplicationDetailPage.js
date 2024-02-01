@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./ApplicationDetailPage.scss";
 import ApplicationListsSidebar from "../../components/ApplicationListsSidebar/ApplicationListsSidebar";
 import ApplicationDetailAnalytics from "../../components/ApplicationDetailAnalytics/ApplicationDetailAnalytics";
@@ -73,10 +73,14 @@ const ApplicatioDetailPage = () => {
           <div className="emails">
             {emails.map((item) => {
               return (
-                <div key={item.id} className="emails__email-item">
+                <Link
+                  to={`/emailDetail/${item.id}`}
+                  key={item.id}
+                  className="emails__email-item"
+                >
                   <p>{item.subject}</p>
                   <p>{new Date(item.email_date).toLocaleString()}</p>
-                </div>
+                </Link>
               );
             })}
           </div>
