@@ -27,6 +27,7 @@ const ApplicatioDetailPage = () => {
       });
   };
   const getAllApplications = () => {
+    // setIsLoading(true);
     axios
       .get(`${BASE_URL}getAllApplications`)
       .then((response) => {
@@ -51,7 +52,7 @@ const ApplicatioDetailPage = () => {
   useEffect(() => {
     getApplicationDetails();
     getAllApplications();
-  }, []);
+  }, [currentApplication, applicationLists]);
 
   if (hasLoaded) {
     return (
