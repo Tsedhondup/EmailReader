@@ -14,12 +14,13 @@ const ApplicatioDetailPage = () => {
   const [emails, setEmails] = useState([]);
   const [interviews, setInterviews] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
-  console.log(currentApplication);
+
   const getApplicationDetails = () => {
     axios
       .get(`${BASE_URL}getApplicationDetails/${id}`)
       .then((response) => {
-        console.log(response.data);
+        setEmails(response.data.message.emails);
+        setInterviews(response.data.message.interviews);
       })
       .catch((err) => {
         console.log(err.message);
@@ -30,7 +31,6 @@ const ApplicatioDetailPage = () => {
       .get(`${BASE_URL}getAllApplications`)
       .then((response) => {
         setApplicationLists(response.data);
-        console.log(response.data);
         return response.data;
       })
       .then((applications) => {
@@ -47,14 +47,38 @@ const ApplicatioDetailPage = () => {
         console.log(err.message);
       });
   };
+
   useEffect(() => {
     getApplicationDetails();
     getAllApplications();
   }, []);
-  return (
-    <article className="application-detail">
-      <ApplicationListsSidebar />
-    </article>
-  );
+
+  if (hasLoaded) {
+    return (
+      <article className="application-detail">
+        <ApplicationListsSidebar applicationLists={applicationLists} />
+        <section>
+          <div>
+            <h1>{currentApplication.company_name}</h1>
+            <h3>{currentApplication.position}</h3>
+          </div>
+          <ApplicationDetailAnalytics emails={emails} interviews={interviews} />
+        </section>
+        <section>
+          <h2>Application history</h2>
+          <div className="emails">
+            {emails.map((item) => {
+              return (
+                <div className="emails__email-item">
+                  <p>{item.subject}</p>
+                  <p>{new Date(item.email_date).toLocaleString()}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      </article>
+    );
+  }
 };
 export default ApplicatioDetailPage;
