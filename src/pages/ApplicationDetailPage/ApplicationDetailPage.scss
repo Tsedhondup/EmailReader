@@ -1,3 +1,7 @@
+.email-table-header{
+    display: flex;
+    justify-content: space-between;
+}
 .emails {
   &__email-item {
     display: flex;

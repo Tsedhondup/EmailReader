@@ -66,10 +66,14 @@ const ApplicatioDetailPage = () => {
         </section>
         <section>
           <h2>Application history</h2>
+          <div className="email-table-header">
+            <h3>Subject</h3>
+            <h3>Date</h3>
+          </div>
           <div className="emails">
             {emails.map((item) => {
               return (
-                <div className="emails__email-item">
+                <div key={item.id} className="emails__email-item">
                   <p>{item.subject}</p>
                   <p>{new Date(item.email_date).toLocaleString()}</p>
                 </div>
