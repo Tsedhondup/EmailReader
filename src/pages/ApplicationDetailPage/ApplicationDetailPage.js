@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ApplicationDetailPage.scss";
 import ApplicationListsSidebar from "../../components/ApplicationListsSidebar/ApplicationListsSidebar";
+import ApplicationDetailAnalytics from "../../components/ApplicationDetailAnalytics/ApplicationDetailAnalytics";
 import axios from "axios";
 
 const ApplicatioDetailPage = () => {
