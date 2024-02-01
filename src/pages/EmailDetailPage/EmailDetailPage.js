@@ -1,20 +1,27 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const EmailDetailPage = () => {
   const { id } = useParams();
   const BASE_URL = "http://localhost:8080/";
-
+  const [emailURL, setEmailURL] = useState("");
+  const [hasLoaded, setHasLoaded] = useState(false);
   useEffect(() => {
     axios
       .get(`${BASE_URL}emailDetail/${id}`)
       .then((response) => {
-        console.log(response.data);
+        setEmailURL(response.data.link_to_email_page);
+      })
+      .then(() => {
+        setHasLoaded(true);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  return <h1>Email detail Page</h1>;
+
+  if (hasLoaded) {
+    return <iframe src={emailURL}></iframe>;
+  }
 };
 export default EmailDetailPage;
