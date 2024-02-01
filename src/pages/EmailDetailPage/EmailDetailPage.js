@@ -14,7 +14,6 @@ const EmailDetailPage = () => {
       .then((response) => {
         setEmailURL(response.data.link_to_email_page);
         setEmailData(response.data);
-        console.log(response.data);
       })
       .then(() => {
         setHasLoaded(true);
