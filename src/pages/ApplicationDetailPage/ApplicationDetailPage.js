@@ -52,7 +52,7 @@ const ApplicatioDetailPage = () => {
   useEffect(() => {
     getApplicationDetails();
     getAllApplications();
-  }, [currentApplication, applicationLists]);
+  }, [id]);
 
   if (hasLoaded) {
     return (
