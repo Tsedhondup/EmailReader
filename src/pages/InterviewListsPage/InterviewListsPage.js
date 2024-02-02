@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./InterviewListsPage.scss";
 const InterviewListPage = () => {
@@ -12,19 +13,30 @@ const InterviewListPage = () => {
   const [activeInterviews, setActiveInterviews] = useState("");
   const [completedInterviews, setCompletedInterviews] = useState("");
 
+  const navigate = useNavigate();
+
   const getAllApplications = () => {
     axios
-      .get(`${API_BASE_URL}getAllApplications`)
+      .get(`${API_BASE_URL}getAllApplications`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setApplications(response.data);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err.message);
       });
   };
   const getAllInterviews = () => {
     axios
-      .get(`${API_BASE_URL}allInterviews`)
+      .get(`${API_BASE_URL}allInterviews`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setInterviewLists(response.data);
         setScheduledInterviews(response.data.length);

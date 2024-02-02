@@ -72,6 +72,5 @@ const LoginPage = () => {
       </form>
     );
   }
-  // if (isLogin) return redirect("/applicationLists");
 };
 export default LoginPage;
