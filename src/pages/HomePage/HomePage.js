@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./HomePage.scss";
 const HomePage = () => {
   const navigate = useNavigate();
 
@@ -10,7 +11,6 @@ const HomePage = () => {
   }, []);
   return (
     <>
-      <h1>Home Page</h1>
       <Link to="/Login">
         <button>Log In</button>
       </Link>

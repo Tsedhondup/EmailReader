@@ -14,6 +14,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
           <Route path="/About" element={<AboutPage />} />
           <Route path="/Contact" element={<ContactPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
