@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./EmailDetailPage.scss";
 const EmailDetailPage = () => {
   const { id } = useParams();
@@ -14,7 +14,6 @@ const EmailDetailPage = () => {
       .then((response) => {
         setEmailURL(response.data.link_to_email_page);
         setEmailData(response.data);
-        console.log(response.data);
       })
       .then(() => {
         setHasLoaded(true);
@@ -46,7 +45,9 @@ const EmailDetailPage = () => {
           <iframe src={emailURL} title="Fetched email detail"></iframe>;
         </section>
         <section>
-          <button>Schedule Interview</button>
+          <Link to={`/scheduleInterview`}>
+            <button>Schedule Interview</button>
+          </Link>
           <button>Add to favourite</button>
           <button>Delete</button>
         </section>

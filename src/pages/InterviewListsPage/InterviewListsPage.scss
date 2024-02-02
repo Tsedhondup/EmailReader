@@ -1,0 +1,13 @@
+.interviews-header {
+  display: flex;
+  justify-content: space-between;
+}
+.interview-lists {
+  &__interview {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.company {
+  cursor: pointer;
+}

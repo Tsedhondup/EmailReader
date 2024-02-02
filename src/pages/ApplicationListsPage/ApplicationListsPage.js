@@ -10,7 +10,7 @@ const ApplicationListPage = () => {
 
   const getApplicationLists = () => {
     axios
-      .get(`${API_BASE_URL}allCompanies`)
+      .get(`${API_BASE_URL}getAllApplications`)
       .then((respond) => {
         setApplicationLists(respond.data);
       })
