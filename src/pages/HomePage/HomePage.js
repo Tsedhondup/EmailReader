@@ -3,9 +3,9 @@ const HomePage = () => {
   return (
     <>
       <h1>Home Page</h1>
-      <link to="/Login">
+      <Link to="/Login">
         <button>Log In</button>
-      </link>
+      </Link>
     </>
   );
 };
