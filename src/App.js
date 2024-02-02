@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, redirect } from "react-router-dom";
 import "./App.css";
-
+import "./styles/partials/_global.scss";
 // COMPONENTS
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";

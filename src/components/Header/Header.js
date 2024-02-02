@@ -26,47 +26,39 @@ const Header = () => {
           console.log(err.message);
         });
     }
-    // setPageLocation(location.pathname);
   }, [location.pathname]);
 
   if (!hasUser) {
     return (
-      <section className="header">
-        <div>
-          <Link className="header-logo-container">
-            <h2 className="header-logo-container__logo">
-              Job Application Tracker
-            </h2>
-          </Link>
-        </div>
+      <section className="header-log-out">
+        <h2 className="header-log-out__app-name">Job Application Tracker</h2>
       </section>
     );
   }
   if (hasUser) {
     return (
-      <section className="header">
-        <div className="header__content">
-          <div>
-            <Link className="header-logo-container">
-              <h2 className="header-logo-container__logo">
-                Job Application Tracker
-              </h2>
+      <section className="header-log-in">
+        <div className="header-log-in__content">
+          <div className="app-logo">
+            <Link className="app-logo__link">
+              <h2 className="app-logo__link--text">Job Application Tracker</h2>
             </Link>
           </div>
-          <div className="header-button-container">
-            <Link to="addApplication">
-              <button className="header-button-container__button">
-                Add Application
-              </button>
-            </Link>
 
-            <p>{user.full_name}</p>
+          <div className="page-link-container">
+            <Link
+              to="/addApplication"
+              className="page-link-container__add-application"
+            >
+              Add Application
+            </Link>
             <Link
               to="/interviewLists"
-              className="header-button-container__button"
+              className="page-link-container__interviews"
             >
               Interviews
             </Link>
+            <p className="page-link-container__profile">{user.full_name}</p>
           </div>
         </div>
       </section>

@@ -1,20 +1,70 @@
-.header {
+.header-log-out {
+  background-color: #f4f1de;
+  color: #e07a5f;
+  text-align: center;
+  padding: 30px;
+  &__app-name {
+    text-transform: uppercase;
+    font-size: 40px;
+    text-decoration: none;
+  }
+  &__app-name:hover {
+    color: #3d405b;
+  }
+}
+
+.header-log-in {
+  background-color: #f4f1de;
+  color: #e07a5f;
+  padding: 30px;
   &__content {
-    background-color: green;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-decoration: none;
-    .header-logo-container {
+  }
+
+  .app-logo {
+    &__link {
       text-decoration: none;
-      // &__logo {
-      //   text-decoration: none;
-      // }
-    }
-    .header-button-container {
-      &__button {
-        height: 40px;
+      color: #e07a5f;
+
+      &--text {
+        text-transform: uppercase;
+        font-size: 24px;
+        text-decoration: none;
+        letter-spacing: 0.5px;
       }
+    }
+    &__link:hover {
+      color: #3d405b;
+    }
+  }
+  .page-link-container {
+    display: flex;
+    gap: 25px;
+
+    // Add application
+    &__add-application,
+    &__interviews,
+    &__profile {
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: uppercase;
+      color: #e07a5f;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    &__add-application:hover,
+    &__interviews:hover,
+    &__profile:hover {
+      color: #3d405b;
     }
   }
 }
+/*
+ antique white : #f4f1de
+ slate blue: #3d405b
+ terra cotta: #E07A5F,
+ muted sage green: 81B29A
+
+ */
