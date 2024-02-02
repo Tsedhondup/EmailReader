@@ -6,6 +6,7 @@ const InterviewListPage = () => {
 
   const [applications, setApplications] = useState([]);
   const [interviewLists, setInterviewLists] = useState([]);
+  const [sortedInterviews, setSortedInterviews] = useState([]);
   const [hasLoaded, setHasloaded] = useState(false);
   const [scheduledInterviews, setScheduledInterviews] = useState("");
   const [activeInterviews, setActiveInterviews] = useState("");
@@ -52,6 +53,69 @@ const InterviewListPage = () => {
       });
   };
 
+  const sortInterviewLists = (applicationId) => {
+    let scheduled = 0;
+    let actives = 0;
+    let completed = 0;
+
+    // SORT INTERVIEW LISTS
+    const sortedInterviewLists = interviewLists.filter((item) => {
+      return item.application_id === applicationId;
+    });
+    // SORT SCHEDULED  INTERVIEWS
+    interviewLists.forEach((item) => {
+      if (item.application_id === applicationId) {
+        scheduled = scheduled + 1;
+      }
+    });
+    // SORT ACTIVE INTERVIEWS
+    interviewLists.forEach((item) => {
+      if (item.application_id === applicationId) {
+        if (item.status === "active") {
+          actives = actives + 1;
+        }
+      }
+    });
+    // SORT COMPLETED INTERVIEWS
+    interviewLists.forEach((item) => {
+      if (item.application_id === applicationId) {
+        if (item.status === "completed") {
+          completed = completed + 1;
+        }
+      }
+    });
+    setSortedInterviews(sortedInterviewLists);
+    setScheduledInterviews(scheduled);
+    setActiveInterviews(actives);
+    setCompletedInterviews(completed);
+  };
+
+  const renderSortedInterviews = () => {
+    return sortedInterviews.map((item) => {
+      return (
+        <div key={item.id} className="interview-lists__interview">
+          <p>{item.company_name}</p>
+          <p>{item.about}</p>
+          <p>{item.iterview_date}</p>
+          <button id={item.id}>Change</button>
+          <p>{item.status}</p>
+        </div>
+      );
+    });
+  };
+  const renderUnsortedInterviews = () => {
+    return interviewLists.map((item) => {
+      return (
+        <div key={item.id} className="interview-lists__interview">
+          <p>{item.company_name}</p>
+          <p>{item.about}</p>
+          <p>{item.iterview_date}</p>
+          <button id={item.id}>Change</button>
+          <p>{item.status}</p>
+        </div>
+      );
+    });
+  };
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
@@ -72,7 +136,17 @@ const InterviewListPage = () => {
         </article>
         <article>
           {applications.map((item) => {
-            return <p key={item.id}>{item.company_name}</p>;
+            return (
+              <p
+                className="company"
+                key={item.id}
+                onClick={() => {
+                  sortInterviewLists(item.id);
+                }}
+              >
+                {item.company_name}
+              </p>
+            );
           })}
         </article>
         <article>
@@ -84,17 +158,9 @@ const InterviewListPage = () => {
             <h3>Status</h3>
           </section>
           <section className="interview-lists">
-            {interviewLists.map((item) => {
-              return (
-                <div key={item.id} className="interview-lists__interview">
-                  <p>{item.company_name}</p>
-                  <p>{item.about}</p>
-                  <p>{item.iterview_date}</p>
-                  <button id={item.id}>Change</button>
-                  <p>{item.status}</p>
-                </div>
-              );
-            })}
+            {sortedInterviews.length > 0
+              ? renderSortedInterviews()
+              : renderUnsortedInterviews()}
           </section>
         </article>
       </>
