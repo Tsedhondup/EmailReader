@@ -45,7 +45,7 @@ const EmailDetailPage = () => {
           <iframe src={emailURL} title="Fetched email detail"></iframe>;
         </section>
         <section>
-          <Link to={`/scheduleInterview/${id}`}>
+          <Link to={`/scheduleInterview`}>
             <button>Schedule Interview</button>
           </Link>
           <button>Add to favourite</button>
