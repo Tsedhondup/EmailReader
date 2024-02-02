@@ -29,7 +29,7 @@ function App() {
           />
           <Route path="/emailDetail/:id" element={<EmailDetailPage />} />
           <Route
-            path="/scheduleInterview/:id"
+            path="/scheduleInterview"
             element={<ScheduleInterviewPage />}
           />
           <Route path="/interviewLists" element={<InterviewListsPage />} />
