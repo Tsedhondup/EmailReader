@@ -11,9 +11,13 @@ const HomePage = () => {
   }, []);
   return (
     <>
-      <Link to="/Login">
-        <button>Log In</button>
-      </Link>
+      <div className="log-in-button-container">
+        <Link to="/Login" className="log-in-button-container__link">
+          <button className="log-in-button-container__link--button">
+            Log In
+          </button>
+        </Link>
+      </div>
     </>
   );
 };

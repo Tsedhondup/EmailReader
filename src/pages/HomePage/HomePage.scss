@@ -1,0 +1,24 @@
+.log-in-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0px;
+  &__link {
+    &--button {
+      width: 150px;
+      text-decoration: none;
+      font-size: 25px;
+      border-radius: 7px;
+      padding: 10px 0px;
+      background-color: #81b29a;
+      color: #f4f1de;
+      border: 1px solid #81b29a;
+      outline-width: 0px;
+      cursor: pointer;
+    }
+    &--button:hover {
+      background-color: #f4f1de;
+      color: #e07a5f;
+    }
+  }
+}
