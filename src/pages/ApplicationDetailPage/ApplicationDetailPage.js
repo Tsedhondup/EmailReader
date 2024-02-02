@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "./ApplicationDetailPage.scss";
 import ApplicationListsSidebar from "../../components/ApplicationListsSidebar/ApplicationListsSidebar";
 import ApplicationDetailAnalytics from "../../components/ApplicationDetailAnalytics/ApplicationDetailAnalytics";
@@ -15,21 +15,32 @@ const ApplicatioDetailPage = () => {
   const [interviews, setInterviews] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
 
+  const navigate = useNavigate();
+
   const getApplicationDetails = () => {
     axios
-      .get(`${BASE_URL}getApplicationDetails/${id}`)
+      .get(`${BASE_URL}getApplicationDetails/${id}`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setEmails(response.data.message.emails);
         setInterviews(response.data.message.interviews);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err.message);
       });
   };
   const getAllApplications = () => {
     // setIsLoading(true);
     axios
-      .get(`${BASE_URL}getAllApplications`)
+      .get(`${BASE_URL}getAllApplications`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setApplicationLists(response.data);
         return response.data;
@@ -45,6 +56,7 @@ const ApplicatioDetailPage = () => {
         setHasLoaded(true);
       })
       .catch((err) => {
+        navigate("Login");
         console.log(err.message);
       });
   };

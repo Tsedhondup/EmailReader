@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "./EmailDetailPage.scss";
 const EmailDetailPage = () => {
   const { id } = useParams();
@@ -8,9 +8,16 @@ const EmailDetailPage = () => {
   const [emailURL, setEmailURL] = useState("");
   const [emailData, setEmailData] = useState("");
   const [hasLoaded, setHasLoaded] = useState(false);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
-      .get(`${BASE_URL}emailDetail/${id}`)
+      .get(`${BASE_URL}emailDetail/${id},`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setEmailURL(response.data.link_to_email_page);
         setEmailData(response.data);
@@ -19,6 +26,7 @@ const EmailDetailPage = () => {
         setHasLoaded(true);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err);
       });
   }, [id]);

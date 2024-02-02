@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useParams } from "react-router-dom";
 
 const ScheduleInterviewPage = () => {
   const BASE_URL = "http://localhost:8080/";
@@ -11,6 +11,8 @@ const ScheduleInterviewPage = () => {
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
   const [hasLoaded, setHasLoaded] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChangeCompany = (event) => {
     const companyName = event.target.value;
@@ -30,23 +32,36 @@ const ScheduleInterviewPage = () => {
     });
 
     axios
-      .post(`${BASE_URL}addInterviews`, {
-        application_id: applicationId,
-        company_name: companyName,
-        interview_date: startDate,
-        about: about,
-        status: "active",
-      })
+      .post(
+        `${BASE_URL}addInterviews`,
+        {
+          application_id: applicationId,
+          company_name: companyName,
+          interview_date: startDate,
+          about: about,
+          status: "active",
+        },
+        {
+          headers: {
+            userId: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err.message);
       });
   };
   useEffect(() => {
     axios
-      .get(`${BASE_URL}getAllApplications`)
+      .get(`${BASE_URL}getAllApplications`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((response) => {
         setAllApplications(response.data);
       })
@@ -54,6 +69,7 @@ const ScheduleInterviewPage = () => {
         setHasLoaded(true);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err.message);
       });
   }, []);
