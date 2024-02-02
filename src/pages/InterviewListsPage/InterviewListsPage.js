@@ -96,7 +96,7 @@ const InterviewListPage = () => {
         <div key={item.id} className="interview-lists__interview">
           <p>{item.company_name}</p>
           <p>{item.about}</p>
-          <p>{item.iterview_date}</p>
+          <p>{item.interview_date}</p>
           <button id={item.id}>Change</button>
           <p>{item.status}</p>
         </div>
@@ -109,7 +109,7 @@ const InterviewListPage = () => {
         <div key={item.id} className="interview-lists__interview">
           <p>{item.company_name}</p>
           <p>{item.about}</p>
-          <p>{item.iterview_date}</p>
+          <p>{item.interview_date}</p>
           <button id={item.id}>Change</button>
           <p>{item.status}</p>
         </div>
@@ -150,7 +150,7 @@ const InterviewListPage = () => {
           })}
         </article>
         <article>
-          <section>
+          <section className="interviews-header">
             <h3>Company</h3>
             <h3>About</h3>
             <h3>Date</h3>
