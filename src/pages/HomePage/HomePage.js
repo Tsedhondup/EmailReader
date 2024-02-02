@@ -1,5 +1,13 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("userId")) {
+      navigate("/applicationLists");
+    }
+  }, []);
   return (
     <>
       <h1>Home Page</h1>
