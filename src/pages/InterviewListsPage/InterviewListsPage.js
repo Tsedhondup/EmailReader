@@ -7,6 +7,9 @@ const InterviewListPage = () => {
   const [applications, setApplications] = useState([]);
   const [interviewLists, setInterviewLists] = useState([]);
   const [hasLoaded, setHasloaded] = useState(false);
+  const [scheduledInterviews, setScheduledInterviews] = useState("");
+  const [activeInterviews, setActiveInterviews] = useState("");
+  const [completedInterviews, setCompletedInterviews] = useState("");
 
   const getAllApplications = () => {
     axios
@@ -23,6 +26,23 @@ const InterviewListPage = () => {
       .get(`${API_BASE_URL}allInterviews`)
       .then((response) => {
         setInterviewLists(response.data);
+        setScheduledInterviews(response.data.length);
+        // VARIABLE TO STORE INTERVIEWS
+        let activeInterviews = 0;
+        let completedInterviews = 0;
+        // SET INTERVIEW DATA
+        response.data.forEach((item) => {
+          if (item.status === "active") {
+            activeInterviews = activeInterviews + 1;
+          }
+        });
+        response.data.forEach((item) => {
+          if (item.status === "completed") {
+            completedInterviews = completedInterviews + 1;
+          }
+        });
+        setActiveInterviews(activeInterviews);
+        setCompletedInterviews(completedInterviews);
       })
       .then(() => {
         setHasloaded(true);
@@ -40,6 +60,16 @@ const InterviewListPage = () => {
   if (hasLoaded) {
     return (
       <>
+        <article>
+          <section>
+            <h1>Interviews</h1>
+          </section>
+          <section>
+            <h3>{`Scheduled: ${scheduledInterviews}`}</h3>
+            <h3>{`Active: ${activeInterviews}`}</h3>
+            <h3>{`Completed: ${completedInterviews}`}</h3>
+          </section>
+        </article>
         <article>
           {applications.map((item) => {
             return <p key={item.id}>{item.company_name}</p>;
