@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ApplicationListsPage.scss";
 import axios from "axios";
 const ApplicationListPage = () => {
@@ -8,9 +8,15 @@ const ApplicationListPage = () => {
   const [applicationLists, setApplicationLists] = useState([]);
   const API_BASE_URL = "http://localhost:8080/";
 
+  const navigate = useNavigate();
+
   const getApplicationLists = () => {
     axios
-      .get(`${API_BASE_URL}getAllApplications`)
+      .get(`${API_BASE_URL}getAllApplications`, {
+        headers: {
+          userId: sessionStorage.getItem("userId"),
+        },
+      })
       .then((respond) => {
         setApplicationLists(respond.data);
       })
@@ -19,6 +25,7 @@ const ApplicationListPage = () => {
         setHasApplication(true);
       })
       .catch((err) => {
+        navigate("/Login");
         console.log(err);
       });
   };

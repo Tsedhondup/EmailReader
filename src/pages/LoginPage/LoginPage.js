@@ -23,7 +23,6 @@ const LoginPage = () => {
         email: email,
       })
       .then((response) => {
-        console.log(response.data);
         sessionStorage.setItem("userId", response.data.userId);
       })
       .then(() => {
