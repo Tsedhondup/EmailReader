@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.scss";
 const LoginPage = () => {
   const API_BASE_URL = "http://localhost:8080/";
 
@@ -38,31 +39,49 @@ const LoginPage = () => {
   if (!isLogin) {
     return (
       <form
+        className="form"
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <h2>Enter credentials</h2> <label>Username</label>
-        <input
-          name="name"
-          placeholder="enter username"
-          value={userName}
-          type="name"
-          onChange={(event) => {
-            handlUserName(event);
-          }}
-        ></input>
-        <label>Email</label>
-        <input
-          name="email"
-          placeholder="enter email"
-          value={email}
-          type="email"
-          onChange={(event) => {
-            handlEmail(event);
-          }}
-        ></input>
+        <h2 className="form__header">Enter credentials</h2>
+
+        <section className="form__inputs">
+          <label htmlFor="name" className="form__inputs--label">
+            Username
+          </label>
+          <input
+            className="form__inputs--name"
+            id="name"
+            name="name"
+            placeholder="enter username"
+            value={userName}
+            type="name"
+            onChange={(event) => {
+              handlUserName(event);
+            }}
+          ></input>
+        </section>
+
+        <section className="form__inputs">
+          <label htmlFor="email" className="form__inputs--label">
+            Email
+          </label>
+          <input
+            className="form__inputs--email"
+            id="email"
+            name="email"
+            placeholder="enter email"
+            value={email}
+            type="email"
+            onChange={(event) => {
+              handlEmail(event);
+            }}
+          ></input>
+        </section>
+
         <button
+          className="form__submit-button"
           onClick={() => {
             handleLogin();
           }}
