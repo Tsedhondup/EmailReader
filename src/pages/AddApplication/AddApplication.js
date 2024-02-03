@@ -39,8 +39,8 @@ const AddApplication = () => {
   };
 
   return (
-    <>
-      <h1>Add job application</h1>
+    <article className="form-container">
+      <h1>Add application</h1>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -103,7 +103,7 @@ const AddApplication = () => {
           </button>
         </section>
       </form>
-    </>
+    </article>
   );
 };
 export default AddApplication;

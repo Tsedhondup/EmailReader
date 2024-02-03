@@ -63,15 +63,14 @@
     }
   }
   &__item {
-    background-color: #f4f1de;
-    border-radius: 4px;
-    margin-bottom: 5px;
     &--link {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       text-decoration: none;
       padding: 10px;
+      background-color: #f4f1de;
       border-radius: 4px;
+      margin-bottom: 5px;
     }
     &--link:hover {
       background-color: #e07a5f;
