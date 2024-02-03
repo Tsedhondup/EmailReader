@@ -33,31 +33,52 @@ const EmailDetailPage = () => {
   if (!hasLoaded) {
     return (
       <div className="loader">
-        <h1 className="loadder__header">Loading....</h1>
+        <h1 className="loader__header">Loading....</h1>
       </div>
     );
   }
   if (hasLoaded) {
     return (
-      <article>
-        <section>
-          <div>
-            <h2>{emailData.subject}</h2>
+      <article className="email-detail">
+        <section className="email-detail__data">
+          <div className="email-detail__about-container">
+            <h2 className="email-detail__about-container--about">
+              <span className="email-subject">Subject:</span>
+              {emailData.subject}
+            </h2>
           </div>
-          <div>
-            <h2>{emailData.company_name}</h2>
-            <h3>Position : {emailData.position}</h3>
+          <div className="email-detail__about-container">
+            <h2 className="email-detail__about-container--company-name">
+              {emailData.company_name}
+            </h2>
+            <h3 className="email-detail__about-container--position">
+              Position : {emailData.position}
+            </h3>
           </div>
         </section>
-        <section>
-          <iframe src={emailURL} title="Fetched email detail"></iframe>;
+        <section className="email-detail__iframe-container">
+          <iframe
+            src={emailURL}
+            title="Fetched email detail"
+            className="email-detail__iframe-container--iframe"
+          ></iframe>
+          ;
         </section>
-        <section>
-          <Link to={`/scheduleInterview`}>
-            <button>Schedule Interview</button>
+        <section className="email-detail__button-container">
+          <Link
+            to={`/scheduleInterview`}
+            className="email-detail__button-container--schedule-link"
+          >
+            <button className="schedule-button">
+              Schedule Interview
+            </button>
           </Link>
-          <button>Add to favourite</button>
-          <button>Delete</button>
+          <button className="email-detail__button-container--add-fav">
+            Add to favourite
+          </button>
+          <button className="email-detail__button-container--delete">
+            Delete
+          </button>
         </section>
       </article>
     );
