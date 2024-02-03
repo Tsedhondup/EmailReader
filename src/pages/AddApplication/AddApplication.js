@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./AddApplication.scss";
 const AddApplication = () => {
   const API_BASE_URL = "http://localhost:8080/";
 
@@ -40,14 +41,19 @@ const AddApplication = () => {
 
   return (
     <article className="form-container">
-      <h1>Add application</h1>
+      <h1 className="form-container__header">Add application</h1>
       <form
+        className="form-container__form"
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <label>Company Name</label>
+        <label className="form-container__form--label" htmlFor="company-name">
+          Company Name
+        </label>
         <input
+          id="company-name"
+          className="form-container__form--input"
           name="company-name"
           placeholder="company name"
           value={companyName}
@@ -55,8 +61,12 @@ const AddApplication = () => {
             setCompanyName(event.target.value);
           }}
         ></input>
-        <label>Company Name</label>
+        <label className="form-container__form--label" htmlFor="position">
+          position
+        </label>
         <input
+          id="position"
+          className="form-container__form--input"
           name="position"
           placeholder="position"
           value={position}
@@ -64,8 +74,12 @@ const AddApplication = () => {
             setPosition(event.target.value);
           }}
         ></input>
-        <label>Company email</label>
+        <label className="form-container__form--label" htmlFor="email">
+          Company email
+        </label>
         <input
+          id="email"
+          className="form-container__form--input"
           name="contact-email"
           placeholder="company email"
           value={email}
@@ -73,8 +87,12 @@ const AddApplication = () => {
             setEmail(event.target.value);
           }}
         ></input>
-        <label>Contact Number</label>
+        <label className="form-container__form--label" htmlFor="contact-phone">
+          Contact Number
+        </label>
         <input
+          id="contact-phone"
+          className="form-container__form--input"
           name="contact-phone"
           placeholder="contact number"
           value={contactNumber}
@@ -82,12 +100,19 @@ const AddApplication = () => {
             setContactNumber(event.target.value);
           }}
         ></input>
+        <label className="form-container__form--label" htmlFor="date">
+          Date
+        </label>
+
         <DatePicker
+          id="date"
+          className="form-container__form--input"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
         />
-        <section>
+        <section className="form-button-container">
           <button
+            className="form-button-container__add"
             onClick={() => {
               handleAddApplication();
             }}
@@ -95,6 +120,7 @@ const AddApplication = () => {
             Add
           </button>
           <button
+            className="form-button-container__cancel"
             onClick={() => {
               navigate("/applicationLists");
             }}
