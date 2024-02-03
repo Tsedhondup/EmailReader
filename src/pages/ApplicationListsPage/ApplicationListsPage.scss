@@ -1,13 +1,40 @@
-.application-table {
-  padding: 0px 16px;
-  // header
+.zero-applications {
+  padding: 40px 32px;
   &__header {
-    color: red;
+    color: #81b29a;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 32px;
   }
 
-  // application-items
-  .application {
-    display: flex;
-    justify-content: space-between;
+  &__message {
+    color: #e07a5f;
+    text-align: center;
+  }
+
+  &__link {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+    &--button {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      height: 50px;
+      width: 100%;
+      color: #81b29a;
+      background-color: #f4f1de;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #f4f1de;
+      outline-width: 0px;
+    }
   }
 }
+/*
+ antique white : #f4f1de 
+ terra cotta: #E07A5F,
+ slate blue: #3d405b
+ muted sage green: 81B29A
+
+ */

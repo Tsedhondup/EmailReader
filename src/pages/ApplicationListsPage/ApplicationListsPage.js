@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./ApplicationListsPage.scss";
 import axios from "axios";
 const ApplicationListPage = () => {
-  const [hasApplication, setHasApplication] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [applicationLists, setApplicationLists] = useState([]);
   const API_BASE_URL = "http://localhost:8080/";
@@ -22,7 +21,6 @@ const ApplicationListPage = () => {
       })
       .then(() => {
         setHasLoaded(true);
-        setHasApplication(true);
       })
       .catch((err) => {
         navigate("/Login");
@@ -34,19 +32,23 @@ const ApplicationListPage = () => {
   }, []);
 
   if (hasLoaded) {
-    if (!hasApplication) {
+    if (applicationLists.length === 0) {
       return (
-        <article>
-          <h1>Job Application Lists</h1>
-          <h3>You don't have any job active job application </h3>
+        <article className="zero-applications">
+          <h1 className="zero-applications__header">Job Application Lists</h1>
+          <h3 className="zero-applications__message">
+            "You don't have any job active job application"
+          </h3>
 
-          <Link to="addApplication">
-            <button>Add application</button>
+          <Link to="/addApplication" className="zero-applications__link">
+            <button className="zero-applications__link--button">
+              Add application
+            </button>
           </Link>
         </article>
       );
     }
-    if (hasApplication) {
+    if (applicationLists.length > 0) {
       return (
         <article className="application-table">
           <h1 className="application-table__header">Job Application lists</h1>
