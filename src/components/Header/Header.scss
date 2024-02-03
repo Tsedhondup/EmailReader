@@ -21,6 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // max-width: 1040px;
+    // margin: auto;
   }
 
   .app-logo {
@@ -44,17 +46,16 @@
     gap: 25px;
 
     // Add application
-    &__add-application,
+    &__applications,
     &__interviews,
     &__profile {
       text-decoration: none;
-      font-size: 16px;
+      font-size: 14Fpx;
       text-transform: uppercase;
       color: #e07a5f;
       cursor: pointer;
-      letter-spacing: 1px;
     }
-    &__add-application:hover,
+    &__applications:hover,
     &__interviews:hover,
     &__profile:hover {
       color: #3d405b;

@@ -47,10 +47,10 @@ const Header = () => {
 
           <div className="page-link-container">
             <Link
-              to="/addApplication"
-              className="page-link-container__add-application"
+              to="/applicationLists"
+              className="page-link-container__applications"
             >
-              Add Application
+              Applications
             </Link>
             <Link
               to="/interviewLists"
@@ -58,6 +58,7 @@ const Header = () => {
             >
               Interviews
             </Link>
+
             <p className="page-link-container__profile">{user.full_name}</p>
           </div>
         </div>
