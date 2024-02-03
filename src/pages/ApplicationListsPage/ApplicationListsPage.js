@@ -8,7 +8,14 @@ const ApplicationListPage = () => {
   const API_BASE_URL = "http://localhost:8080/";
 
   const navigate = useNavigate();
-
+  const getDate = (dateData) => {
+    const dateArray = new Date(dateData).toLocaleString().split(",");
+    return dateArray[0];
+  };
+  const getTime = (dateData) => {
+    const dateArray = new Date(dateData).toLocaleString().split(",");
+    return dateArray[1];
+  };
   const getApplicationLists = () => {
     axios
       .get(`${API_BASE_URL}getAllApplications`, {
@@ -35,7 +42,7 @@ const ApplicationListPage = () => {
     if (applicationLists.length === 0) {
       return (
         <article className="zero-applications">
-          <h1 className="zero-applications__header">Job Application Lists</h1>
+          <h1 className="zero-applications__header">Application Lists</h1>
           <h3 className="zero-applications__message">
             "You don't have any job active job application"
           </h3>
@@ -51,18 +58,31 @@ const ApplicationListPage = () => {
     if (applicationLists.length > 0) {
       return (
         <article className="application-table">
-          <h1 className="application-table__header">Job Application lists</h1>
-          <section>
+          <h1 className="application-table__header">Application lists</h1>
+          <section className="application-table__item-header">
+            <h3 className="application-table__item-header--company-name">
+              Company name
+            </h3>
+            <h3 className="application-table__item-header--position">
+              Position
+            </h3>
+            <h3 className="application-table__item-header--date">
+              Date Applied
+            </h3>
+            <h3 className="application-table__item-header--time">Time</h3>
+          </section>
+          <section className="application-table__item">
             {applicationLists.map((item) => {
               return (
                 <Link
                   to={`/applicationDetail/${item.id}`}
                   key={item.id}
-                  className="application"
+                  className="application-table__item--link"
                 >
-                  <h2 className="application__company">{item.company_name}</h2>
-                  <h2 className="application__position">{item.position}</h2>
-                  <h2 className="application__date">{item.date_applied}</h2>
+                  <h2 className="company-name">{item.company_name}</h2>
+                  <h2 className="position">{item.position}</h2>
+                  <h2 className="date">{getDate(item.date_applied)}</h2>
+                  <h2 className="time">{getTime(item.date_applied)}</h2>
                 </Link>
               );
             })}
