@@ -133,7 +133,7 @@ const ScheduleInterviewPage = () => {
 
           <DatePicker
             id="date"
-            className="interview-container__input"
+            className="interview-container__input interview-container__date"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />

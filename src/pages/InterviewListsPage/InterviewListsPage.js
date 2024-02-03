@@ -105,12 +105,16 @@ const InterviewListPage = () => {
   const renderSortedInterviews = () => {
     return sortedInterviews.map((item) => {
       return (
-        <div key={item.id} className="interview-lists__interview">
-          <p>{item.company_name}</p>
-          <p>{item.about}</p>
-          <p>{item.interview_date}</p>
-          <button id={item.id}>Change</button>
-          <p>{item.status}</p>
+        <div key={item.id} className="interview-table-container__data--item">
+          <p className="interview-table-data">{item.company_name}</p>
+          <p className="interview-table-data">{item.about}</p>
+          <p className="interview-table-data">
+            {new Date(item.interview_date).toDateString()}
+          </p>
+          <button id={item.id} className="interview-table-data change-button">
+            Change
+          </button>
+          <p className="interview-table-data">{item.status}</p>
         </div>
       );
     });
@@ -118,12 +122,16 @@ const InterviewListPage = () => {
   const renderUnsortedInterviews = () => {
     return interviewLists.map((item) => {
       return (
-        <div key={item.id} className="interview-lists__interview">
-          <p>{item.company_name}</p>
-          <p>{item.about}</p>
-          <p>{item.interview_date}</p>
-          <button id={item.id}>Change</button>
-          <p>{item.status}</p>
+        <div key={item.id} className="interview-table-container__data--item">
+          <p className="interview-table-data">{item.company_name}</p>
+          <p className="interview-table-data">{item.about}</p>
+          <p className="interview-table-data">
+            {new Date(item.interview_date).toDateString()}
+          </p>
+          <button id={item.id} className="interview-table-data change-button">
+            Change
+          </button>
+          <p className="interview-table-data">{item.status}</p>
         </div>
       );
     });
@@ -135,22 +143,12 @@ const InterviewListPage = () => {
 
   if (hasLoaded) {
     return (
-      <>
-        <article>
-          <section>
-            <h1>Interviews</h1>
-          </section>
-          <section>
-            <h3>{`Scheduled: ${scheduledInterviews}`}</h3>
-            <h3>{`Active: ${activeInterviews}`}</h3>
-            <h3>{`Completed: ${completedInterviews}`}</h3>
-          </section>
-        </article>
-        <article>
+      <article className="interview-list-container">
+        <section className="company-list-container">
           {applications.map((item) => {
             return (
               <p
-                className="company"
+                className="company-list-container__company"
                 key={item.id}
                 onClick={() => {
                   sortInterviewLists(item.id);
@@ -160,22 +158,43 @@ const InterviewListPage = () => {
               </p>
             );
           })}
-        </article>
-        <article>
-          <section className="interviews-header">
-            <h3>Company</h3>
-            <h3>About</h3>
-            <h3>Date</h3>
-            <h3>Reschedule</h3>
-            <h3>Status</h3>
+        </section>
+
+        <section className="interview-data-container">
+          <section className="interview-header-data-container">
+            <h1 className="interview-header-data-container__header">
+              Interview Lists
+            </h1>
+            <section className="interview-header-data-container__analytics">
+              <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
+              <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
+              <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
+            </section>
           </section>
-          <section className="interview-lists">
-            {sortedInterviews.length > 0
-              ? renderSortedInterviews()
-              : renderUnsortedInterviews()}
+          <section className="interview-table-container">
+            <section className="interview-table-container__headers">
+              <h3 className="interview-table-container__headers--name">
+                Company
+              </h3>
+              <h3 className="interview-table-container__headers--name">
+                About
+              </h3>
+              <h3 className="interview-table-container__headers--name">Date</h3>
+              <h3 className="interview-table-container__headers--name">
+                Reschedule
+              </h3>
+              <h3 className="interview-table-container__headers--name">
+                Status
+              </h3>
+            </section>
+            <section className="interview-table-container__data">
+              {sortedInterviews.length > 0
+                ? renderSortedInterviews()
+                : renderUnsortedInterviews()}
+            </section>
           </section>
-        </article>
-      </>
+        </section>
+      </article>
     );
   }
 
