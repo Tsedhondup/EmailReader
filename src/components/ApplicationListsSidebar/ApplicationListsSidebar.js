@@ -2,11 +2,19 @@ import { Link } from "react-router-dom";
 import "./ApplicationListsSidebar.scss";
 const ApplicationListsSidebar = (props) => {
   return (
-    <article>
+    <article className="sidebar">
       {props.applicationLists.map((item) => {
         return (
-          <Link key={item.id} to={`/applicationDetail/${item.id}`}>
-            <p>{item.company_name}</p>
+          <Link
+            key={item.id}
+            to={`/applicationDetail/${item.id}`}
+            className={
+              props.currentCompany === item.company_name
+                ? "sidebar__active-company "
+                : "sidebar__company"
+            }
+          >
+            <span>{item.company_name}</span>
           </Link>
         );
       })}

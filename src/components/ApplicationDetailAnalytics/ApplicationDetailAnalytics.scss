@@ -1,0 +1,33 @@
+.analytics {
+  padding: 16px;
+  &__total-responds {
+    margin-bottom: 15px;
+    &--header {
+      color: #f4f1de;
+      padding-right: 10px;
+      text-transform: uppercase;
+      font-size: 15px;
+    }
+    &--value {
+      color: #81b29a;
+      font-weight: bold;
+      background-color: #f4f1de;
+      padding: 1px 2px;
+      border-radius: 2px;
+    }
+  }
+  &__interviews {
+    &--value {
+      font-size: 15px;
+      color: #f4f1de;
+      text-transform: uppercase;
+    }
+  }
+}
+/*
+ antique white : 
+ terra cotta: #E07A5F,
+ slate blue: #3d405b
+ muted sage green: 81B29A
+
+ */
