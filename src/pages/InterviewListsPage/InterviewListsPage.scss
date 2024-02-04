@@ -70,7 +70,7 @@
     &--item:hover {
       background-color: #e07a5f;
       .change-button {
-        background-color: #f4f1de;
+        // background-color: #f4f1de;
         color: #3d405b;
       }
       .interview-table-data {
@@ -90,6 +90,11 @@
       background-color: #e07a5f;
     }
   }
+}
+.interview-loader {
+  color: #f4f1de;
+  text-transform: uppercase;
+  font-size: 25px;
 }
 
 /*

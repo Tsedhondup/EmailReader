@@ -43,22 +43,35 @@
   }
   .page-link-container {
     display: flex;
+    align-items: center;
     gap: 25px;
 
     // Add application
     &__applications,
     &__interviews,
-    &__profile {
+    &__profile,
+    &__add-interviews,
+    &__add-application {
       text-decoration: none;
-      font-size: 14Fpx;
+      font-size: 13px;
       text-transform: uppercase;
       color: #e07a5f;
       cursor: pointer;
     }
     &__applications:hover,
     &__interviews:hover,
-    &__profile:hover {
+    &__add-interviews:hover,
+    &__add-application:hover {
       color: #3d405b;
+    }
+    &__profile {
+      background-color: #81b29a;
+      color: #f4f1de;
+      border-radius: 4px;
+      padding: 5px;
+    }
+    &__profile:hover {
+      background-color: #3d405b;
     }
   }
 }
