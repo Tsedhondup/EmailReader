@@ -20,7 +20,7 @@ const ApplicationListPage = () => {
     axios
       .get(`${API_BASE_URL}getAllApplications`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((respond) => {

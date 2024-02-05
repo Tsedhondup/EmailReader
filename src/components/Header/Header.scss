@@ -51,7 +51,8 @@
     &__interviews,
     &__profile,
     &__add-interviews,
-    &__add-application {
+    &__add-application,
+    &__sign-out {
       text-decoration: none;
       font-size: 13px;
       text-transform: uppercase;
@@ -61,7 +62,8 @@
     &__applications:hover,
     &__interviews:hover,
     &__add-interviews:hover,
-    &__add-application:hover {
+    &__add-application:hover,
+    &__sign-out:hover {
       color: #3d405b;
     }
     &__profile {

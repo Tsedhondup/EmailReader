@@ -44,7 +44,7 @@ const ScheduleInterviewPage = () => {
         },
         {
           headers: {
-            userId: sessionStorage.getItem("userId"),
+            session_id: sessionStorage.getItem("userId"),
           },
         }
       )
@@ -60,7 +60,7 @@ const ScheduleInterviewPage = () => {
     axios
       .get(`${BASE_URL}getAllApplications`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {

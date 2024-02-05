@@ -19,7 +19,7 @@ const InterviewListPage = () => {
     axios
       .get(`${API_BASE_URL}getAllApplications`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {
@@ -34,7 +34,7 @@ const InterviewListPage = () => {
     axios
       .get(`${API_BASE_URL}allInterviews`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {

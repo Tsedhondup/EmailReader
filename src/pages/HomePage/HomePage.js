@@ -11,11 +11,12 @@ const HomePage = () => {
   }, []);
   return (
     <>
-      <div className="log-in-button-container">
-        <Link to="/Login" className="log-in-button-container__link">
-          <button className="log-in-button-container__link--button">
-            Log In
-          </button>
+      <div className="button-container">
+        <Link to="/Login" className="button-container__link">
+          <button className="button-container__link--button">Log In</button>
+        </Link>
+        <Link to="/SignUp" className="button-container__link">
+          <button className="button-container__link--button">Sign Up</button>
         </Link>
       </div>
     </>

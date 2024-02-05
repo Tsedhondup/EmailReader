@@ -19,7 +19,7 @@ const AddApplication = () => {
       .post(
         `${API_BASE_URL}addApplication`,
         {
-          profile_id: Number(sessionStorage.getItem("userId")),
+          profile_id: Number(sessionStorage.getItem("profileId")),
           company_name: companyName,
           company_email: email,
           date_applied: startDate,
@@ -27,7 +27,7 @@ const AddApplication = () => {
         },
         {
           headers: {
-            userId: sessionStorage.getItem("userId"),
+            session_id: sessionStorage.getItem("userId"),
           },
         }
       )
@@ -36,6 +36,7 @@ const AddApplication = () => {
       })
       .catch((err) => {
         navigate("/Login");
+        console.log(err.message);
       });
   };
 

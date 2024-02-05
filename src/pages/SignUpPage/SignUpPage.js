@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const SignUpPage = () => {
   const API_BASE_URL = "http://localhost:8080/";
 
@@ -25,12 +25,15 @@ const SignUpPage = () => {
   };
   const handleSignUp = () => {
     axios
-      .post(`${API_BASE_URL}login`, {
-        userName: userName,
+      .post(`${API_BASE_URL}signUp`, {
+        id: 1,
+        full_name: userName,
         email: email,
+        password: password,
+        phone_number: phoneNumber,
       })
       .then((response) => {
-        sessionStorage.setItem("userId", response.data.userId);
+        sessionStorage.setItem("session", response.data.session_id);
       })
       .then(() => {
         navigate("/applicationLists");
@@ -87,7 +90,7 @@ const SignUpPage = () => {
           className="form__inputs--phone"
           id="phone"
           name="phone"
-          placeholder="enter email"
+          placeholder="enter phone"
           value={phoneNumber}
           type="number"
           onChange={(event) => {
@@ -119,6 +122,9 @@ const SignUpPage = () => {
       >
         Sign Up
       </button>
+      <Link to="/Login">
+        <button>Log in</button>
+      </Link>
     </form>
   );
 };

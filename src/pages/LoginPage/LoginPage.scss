@@ -27,7 +27,9 @@
       margin-bottom: 10px;
     }
     &--name,
-    &--email {
+    &--email,
+    &--phone,
+    &--password {
       padding: 6px;
       width: 100%;
       height: 40px;
@@ -36,12 +38,16 @@
       outline-width: 0px;
     }
     &--name::placeholder,
-    &--email::placeholder {
+    &--email::placeholder,
+    &--phone::placeholder,
+    &--password::placeholder {
       text-transform: uppercase;
       font-size: 12px;
     }
     &--name:hover,
-    &--email:hover {
+    &--email:hover,
+    &--phone:hover,
+    &--password:hover {
       background-color: #f4f1de;
     }
   }

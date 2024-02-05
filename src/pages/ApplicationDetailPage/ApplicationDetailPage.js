@@ -29,7 +29,7 @@ const ApplicatioDetailPage = () => {
     axios
       .get(`${BASE_URL}getApplicationDetails/${id}`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {
@@ -45,7 +45,7 @@ const ApplicatioDetailPage = () => {
     axios
       .get(`${BASE_URL}getAllApplications`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {
@@ -63,12 +63,15 @@ const ApplicatioDetailPage = () => {
         setHasLoaded(true);
       })
       .catch((err) => {
-        navigate("Login");
+        navigate("/Login");
         console.log(err.message);
       });
   };
 
   useEffect(() => {
+    if (!sessionStorage.getItem("userId")) {
+      navigate("/Login");
+    }
     getApplicationDetails();
     getAllApplications();
   }, [id]);

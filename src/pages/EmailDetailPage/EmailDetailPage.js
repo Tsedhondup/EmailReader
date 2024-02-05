@@ -15,7 +15,7 @@ const EmailDetailPage = () => {
     axios
       .get(`${BASE_URL}emailDetail/${id},`, {
         headers: {
-          userId: sessionStorage.getItem("userId"),
+          session_id: sessionStorage.getItem("userId"),
         },
       })
       .then((response) => {

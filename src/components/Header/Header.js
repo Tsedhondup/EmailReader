@@ -8,12 +8,17 @@ const Header = () => {
   const [user, setUser] = useState("");
   const [hasUser, setHasUser] = useState(false);
 
+  const handleLogOut = () => {
+    axios.post(`${API_BASE_URL}logOut`).catch((err) => {
+      console.log(err.message);
+    });
+  };
   useEffect(() => {
     if (sessionStorage.getItem("userId")) {
       axios
         .get(`${API_BASE_URL}profile`, {
           headers: {
-            userId: sessionStorage.getItem("userId"),
+            session_id: sessionStorage.getItem("userId"),
           },
         })
         .then((response) => {
@@ -71,6 +76,16 @@ const Header = () => {
               add application
             </Link>
             <p className="page-link-container__profile">{user.full_name}</p>
+            <Link
+              to="/Login"
+              className="page-link-container__sign-out"
+              onClick={() => {
+                sessionStorage.removeItem("userId");
+                sessionStorage.removeItem("profileId");
+              }}
+            >
+              sign out
+            </Link>
           </div>
         </div>
       </section>
