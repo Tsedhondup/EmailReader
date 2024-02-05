@@ -82,6 +82,8 @@ const Header = () => {
               onClick={() => {
                 sessionStorage.removeItem("userId");
                 sessionStorage.removeItem("profileId");
+                setHasUser(false);
+                handleLogOut();
               }}
             >
               sign out
