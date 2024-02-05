@@ -103,6 +103,7 @@ const SignUpPage = () => {
           app password
           <a
             className="app-password-info"
+            rel="external"
             href="https://support.google.com/mail/answer/185833?hl=en#:~:text=An%20app%20password%20is%20a,2%2DStep%20Verification%20turned%20on."
             target="_blank"
           >
