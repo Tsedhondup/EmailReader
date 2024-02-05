@@ -88,7 +88,7 @@ const LoginPage = () => {
           Login
         </button>
         <Link to="/SignUp">
-          <button>Sign Up</button>
+          <button className="redirect-sign-up">Sign Up</button>
         </Link>
       </form>
     );

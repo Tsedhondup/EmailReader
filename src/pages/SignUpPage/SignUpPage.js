@@ -68,7 +68,7 @@ const SignUpPage = () => {
       </section>
       <section className="form__inputs">
         <label htmlFor="email" className="form__inputs--label">
-          Email
+          Email <span className="email-support">Gmail only!</span>
         </label>
         <input
           className="form__inputs--email"
@@ -100,13 +100,20 @@ const SignUpPage = () => {
       </section>
       <section className="form__inputs">
         <label htmlFor="password" className="form__inputs--label">
-          password
+          app password
+          <a
+            className="app-password-info"
+            href="https://support.google.com/mail/answer/185833?hl=en#:~:text=An%20app%20password%20is%20a,2%2DStep%20Verification%20turned%20on."
+            target="_blank"
+          >
+            see more?
+          </a>
         </label>
         <input
           className="form__inputs--password"
           id="password"
           name="password"
-          placeholder="enter password"
+          placeholder="enter app password"
           value={password}
           type="password"
           onChange={(event) => {
@@ -123,7 +130,7 @@ const SignUpPage = () => {
         Sign Up
       </button>
       <Link to="/Login">
-        <button>Log in</button>
+        <button className="redirect-log-in">Log in</button>
       </Link>
     </form>
   );
