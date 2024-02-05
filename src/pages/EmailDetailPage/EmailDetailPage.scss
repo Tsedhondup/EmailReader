@@ -1,18 +1,115 @@
-iframe {
-  border-width: 1px;
-  overflow: none;
-  width: 100%;
-  height: 500px;
+.email-detail {
+  max-width: 1040px;
+  margin: auto;
+
+  // DATA SECTION
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0px;
+    color: #f4f1de;
+    font-weight: normal;
+  }
+  &__about-container {
+    &--about {
+      font-weight: normal;
+      font-size: 16px;
+      color: #81b29a;
+    }
+    &--company-name {
+      color: #e07a57;
+    }
+    &--position {
+      font-weight: normal;
+      font-size: 16px;
+    }
+  }
+  .email-subject {
+    color: #e07a57;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 20px;
+    padding-right: 16px;
+  }
+
+  // IFRAME
+  &__iframe-container {
+    &--iframe {
+      border-width: 1px;
+      overflow: none;
+      width: 100%;
+      height: 700px;
+    }
+  }
+
+  // BUTTON CONTAINER
+  &__button-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    &--schedule-link {
+      text-decoration: none;
+    }
+    &--add-fav,
+    &--delete {
+      display: block;
+      margin-bottom: 7px;
+      width: 100%;
+      height: 40px;
+      border: 1px solid #f4f1de;
+      border-radius: 4px;
+      outline-width: 0px;
+      font-weight: normal;
+      cursor: pointer;
+      font-size: 18px;
+      color: #3d405b;
+    }
+    &--add-fav:hover {
+      background-color: #3d405b;
+      color: #f4f1de;
+    }
+    &--delete:hover {
+      background-color: #e07a57;
+      color: #f4f1de;
+      border-color: #e07a57;
+    }
+  }
+  .schedule-button {
+    display: block;
+    margin-bottom: 7px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #f4f1de;
+    border-radius: 4px;
+    outline-width: 0px;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 18px;
+    color: #3d405b;
+  }
+  .schedule-button:hover {
+    background-color: #81b29a;
+    color: #f4f1de;
+    border-color: #81b29a;
+  }
 }
+
 .loader {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  z-index: 10;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
   &__header {
     text-transform: uppercase;
+    color: #f4f1de;
   }
 }
+
+/*
+ antique white : #f4f1de 
+ terra cotta: #E07A5F,
+ slate blue: #3d405b
+ muted sage green: 81B29A
+
+ */

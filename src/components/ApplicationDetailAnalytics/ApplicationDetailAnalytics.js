@@ -1,14 +1,17 @@
+import "./ApplicationDetailAnalytics.scss";
 const ApplicationDetailAnalytics = (props) => {
   return (
-    <article>
-      <section className="total-responds">
-        <p className="total-responds__header">
+    <article className="analytics">
+      <section className="analytics__total-responds">
+        <span className="analytics__total-responds--header">
           {props.emails.length > 1 ? "Total responds:" : "Total respond:"}
-        </p>
-        <p className="total-responds__value">{props.emails.length}</p>
+        </span>
+        <span className="analytics__total-responds--value">
+          {props.emails.length}
+        </span>
       </section>
-      <section className="interwievs">
-        <p>
+      <section className="analytics__interviews">
+        <p className="analytics__interviews--value">
           {props.interviews.length === 0
             ? "Scheduled interviews: 0"
             : `Scheduled interviews ${props.interviews.length}`}
