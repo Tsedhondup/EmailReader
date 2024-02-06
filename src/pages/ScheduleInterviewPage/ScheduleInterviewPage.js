@@ -25,18 +25,11 @@ const ScheduleInterviewPage = () => {
   };
 
   const handleInterviewPost = async () => {
-    let applicationId;
-    await allApplications.forEach((item) => {
-      if (item.company_name === companyName) {
-        applicationId = item.id;
-      }
-    });
-
     axios
       .post(
         `${BASE_URL}addInterviews`,
         {
-          application_id: applicationId,
+          profile_id: sessionStorage.getItem("profileId"),
           company_name: companyName,
           interview_date: startDate,
           about: about,
@@ -58,11 +51,14 @@ const ScheduleInterviewPage = () => {
   };
   useEffect(() => {
     axios
-      .get(`${BASE_URL}getAllApplications`, {
-        headers: {
-          session_id: sessionStorage.getItem("userId"),
-        },
-      })
+      .get(
+        `${BASE_URL}getAllApplications/${sessionStorage.getItem("profileId")}`,
+        {
+          headers: {
+            session_id: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((response) => {
         setAllApplications(response.data);
       })

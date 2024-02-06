@@ -17,11 +17,16 @@ const InterviewListPage = () => {
 
   const getAllApplications = () => {
     axios
-      .get(`${API_BASE_URL}getAllApplications`, {
-        headers: {
-          session_id: sessionStorage.getItem("userId"),
-        },
-      })
+      .get(
+        `${API_BASE_URL}getAllApplications/${sessionStorage.getItem(
+          "profileId"
+        )}`,
+        {
+          headers: {
+            session_id: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((response) => {
         setApplications(response.data);
       })
@@ -32,11 +37,14 @@ const InterviewListPage = () => {
   };
   const getAllInterviews = () => {
     axios
-      .get(`${API_BASE_URL}allInterviews`, {
-        headers: {
-          session_id: sessionStorage.getItem("userId"),
-        },
-      })
+      .get(
+        `${API_BASE_URL}allInterviews/${sessionStorage.getItem("profileId")}`,
+        {
+          headers: {
+            session_id: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((response) => {
         setInterviewLists(response.data);
         setScheduledInterviews(response.data.length);
