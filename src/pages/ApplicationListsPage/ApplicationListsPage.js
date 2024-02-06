@@ -18,11 +18,16 @@ const ApplicationListPage = () => {
   };
   const getApplicationLists = () => {
     axios
-      .get(`${API_BASE_URL}getAllApplications`, {
-        headers: {
-          session_id: sessionStorage.getItem("userId"),
-        },
-      })
+      .get(
+        `${API_BASE_URL}getAllApplications/${sessionStorage.getItem(
+          "profileId"
+        )}`,
+        {
+          headers: {
+            session_id: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((respond) => {
         setApplicationLists(respond.data);
       })

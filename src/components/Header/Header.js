@@ -16,7 +16,7 @@ const Header = () => {
   useEffect(() => {
     if (sessionStorage.getItem("userId")) {
       axios
-        .get(`${API_BASE_URL}profile`, {
+        .get(`${API_BASE_URL}profile/${sessionStorage.getItem("profileId")}`, {
           headers: {
             session_id: sessionStorage.getItem("userId"),
           },

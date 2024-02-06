@@ -26,7 +26,6 @@ const SignUpPage = () => {
   const handleSignUp = () => {
     axios
       .post(`${API_BASE_URL}signUp`, {
-        id: 1,
         full_name: userName,
         email: email,
         password: password,
@@ -39,7 +38,7 @@ const SignUpPage = () => {
         navigate("/applicationLists");
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
       });
   };
   return (

@@ -33,21 +33,40 @@ const ApplicatioDetailPage = () => {
         },
       })
       .then((response) => {
-        setEmails(response.data.message.emails);
-        setInterviews(response.data.message.interviews);
+        console.log(response.data.message);
+        setEmails(response.data.message);
       })
       .catch((err) => {
         navigate("/Login");
-        console.log(err.message);
+        console.log(err);
       });
   };
-  const getAllApplications = () => {
+
+  const getAllInterviews = () => {
     axios
-      .get(`${BASE_URL}getAllApplications`, {
+      .get(`${BASE_URL}allInterviews/${sessionStorage.getItem("profileId")}`, {
         headers: {
           session_id: sessionStorage.getItem("userId"),
         },
       })
+      .then((response) => {
+        setInterviews(response.data[0]);
+      })
+      .catch((err) => {
+        navigate("/Login");
+        console.log(err);
+      });
+  };
+  const getAllApplications = () => {
+    axios
+      .get(
+        `${BASE_URL}getAllApplications/${sessionStorage.getItem("profileId")}`,
+        {
+          headers: {
+            session_id: sessionStorage.getItem("userId"),
+          },
+        }
+      )
       .then((response) => {
         setApplicationLists(response.data);
         return response.data;
@@ -74,6 +93,7 @@ const ApplicatioDetailPage = () => {
     }
     getApplicationDetails();
     getAllApplications();
+    getAllInterviews();
   }, [id]);
 
   if (hasLoaded) {
