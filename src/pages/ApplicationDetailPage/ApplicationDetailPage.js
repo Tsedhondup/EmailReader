@@ -33,7 +33,6 @@ const ApplicatioDetailPage = () => {
         },
       })
       .then((response) => {
-        console.log(response.data.message);
         setEmails(response.data.message);
       })
       .catch((err) => {
