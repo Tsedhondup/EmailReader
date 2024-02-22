@@ -24,6 +24,24 @@ const ApplicatioDetailPage = () => {
     const dateArray = new Date(dateData).toLocaleString().split(",");
     return dateArray[1];
   };
+  const handleFetchNewEmails = (applicationId, companyEmail) => {
+    axios
+      .get(`${BASE_URL}getNewEmails`, {
+        headers: {
+          session_id: sessionStorage.getItem("userId"),
+          application_id: applicationId,
+          companyEmail: companyEmail,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setEmails(response.data.message);
+      })
+      .catch((err) => {
+        navigate("/Login");
+        console.log(err);
+      });
+  };
 
   const getApplicationDetails = () => {
     axios
@@ -124,6 +142,18 @@ const ApplicatioDetailPage = () => {
           <section className="application-detail__application-history">
             <h2 className="application-detail__email-table-header">
               Application history
+              <button
+                onClick={() => {
+                  // Get application_id and company emails
+
+                  handleFetchNewEmails(
+                    emails[0].application_id,
+                    emails[0].from
+                  );
+                }}
+              >
+                fetch new email
+              </button>
             </h2>
             <div className="email-table-header">
               <h3 className="email-table-header__subject">Subject</h3>
