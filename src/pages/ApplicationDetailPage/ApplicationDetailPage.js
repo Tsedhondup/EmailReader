@@ -141,16 +141,17 @@ const ApplicatioDetailPage = () => {
           </section>
           <section className="application-detail__application-history">
             <h2 className="application-detail__email-table-header">
-              Application history
+              <span className="application-detail__email-table-header--header">
+                Application history
+              </span>
               <button
                 onClick={() => {
-                  // Get application_id and company emails
-
                   handleFetchNewEmails(
                     emails[0].application_id,
                     emails[0].from
                   );
                 }}
+                className="application-detail__email-table-header--fetch-new-button"
               >
                 fetch new email
               </button>
