@@ -28,7 +28,7 @@ const ApplicatioDetailPage = () => {
     axios
       .get(`${BASE_URL}getNewEmails`, {
         headers: {
-          session_id: sessionStorage.getItem("userId"),
+          authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           application_id: applicationId,
           companyEmail: companyEmail,
         },
@@ -47,7 +47,7 @@ const ApplicatioDetailPage = () => {
     axios
       .get(`${BASE_URL}getApplicationDetails/${id}`, {
         headers: {
-          session_id: sessionStorage.getItem("userId"),
+          authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
         },
       })
       .then((response) => {
@@ -63,7 +63,7 @@ const ApplicatioDetailPage = () => {
     axios
       .get(`${BASE_URL}allInterviews/${sessionStorage.getItem("profileId")}`, {
         headers: {
-          session_id: sessionStorage.getItem("userId"),
+          authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
         },
       })
       .then((response) => {
@@ -80,7 +80,7 @@ const ApplicatioDetailPage = () => {
         `${BASE_URL}getAllApplications/${sessionStorage.getItem("profileId")}`,
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )
@@ -105,7 +105,7 @@ const ApplicatioDetailPage = () => {
   };
 
   useEffect(() => {
-    if (!sessionStorage.getItem("userId")) {
+    if (!sessionStorage.getItem("profileId")) {
       navigate("/Login");
     }
     getApplicationDetails();

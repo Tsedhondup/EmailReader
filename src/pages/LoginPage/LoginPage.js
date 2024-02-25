@@ -25,6 +25,7 @@ const LoginPage = () => {
       })
       .then((response) => {
         sessionStorage.authToken = response.data.token;
+        sessionStorage.setItem("profileId", response.data.profile_id);
       })
       .then(() => {
         setIsLogin(true);

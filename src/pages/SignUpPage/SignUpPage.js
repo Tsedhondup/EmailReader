@@ -32,7 +32,7 @@ const SignUpPage = () => {
         phone_number: phoneNumber,
       })
       .then((response) => {
-        sessionStorage.setItem("session", response.data.session_id);
+        sessionStorage.authToken = response.data.token;
       })
       .then(() => {
         navigate("/applicationLists");

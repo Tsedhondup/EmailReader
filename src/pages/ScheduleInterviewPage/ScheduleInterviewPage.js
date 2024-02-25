@@ -37,7 +37,7 @@ const ScheduleInterviewPage = () => {
         },
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )
@@ -55,7 +55,7 @@ const ScheduleInterviewPage = () => {
         `${BASE_URL}getAllApplications/${sessionStorage.getItem("profileId")}`,
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )

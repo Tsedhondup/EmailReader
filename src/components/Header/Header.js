@@ -7,22 +7,27 @@ const Header = () => {
   let location = useLocation();
   const [user, setUser] = useState("");
   const [hasUser, setHasUser] = useState(false);
-
   const handleLogOut = () => {
-    axios.post(`${API_BASE_URL}logOut`).catch((err) => {
-      console.log(err.message);
-    });
+    axios
+      .post(`${API_BASE_URL}logOut`)
+      .then(() => {
+        sessionStorage.removeItem("authToken");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   useEffect(() => {
-    if (sessionStorage.getItem("userId")) {
+    if (sessionStorage.getItem("profileId")) {
       axios
         .get(`${API_BASE_URL}profile/${sessionStorage.getItem("profileId")}`, {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         })
         .then((response) => {
           setUser(response.data[0]);
+          console.log(response.data[0]);
         })
         .then(() => {
           setHasUser(true);

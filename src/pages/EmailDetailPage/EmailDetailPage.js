@@ -15,7 +15,7 @@ const EmailDetailPage = () => {
     axios
       .get(`${BASE_URL}emailDetail/${id},`, {
         headers: {
-          session_id: sessionStorage.getItem("userId"),
+          authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
         },
       })
       .then((response) => {
@@ -69,9 +69,7 @@ const EmailDetailPage = () => {
             to={`/scheduleInterview`}
             className="email-detail__button-container--schedule-link"
           >
-            <button className="schedule-button">
-              Schedule Interview
-            </button>
+            <button className="schedule-button">Schedule Interview</button>
           </Link>
           <button className="email-detail__button-container--add-fav">
             Add to favourite
