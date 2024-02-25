@@ -45,6 +45,13 @@ const Header = () => {
       </section>
     );
   }
+  if (location.pathname === "/Login") {
+    return (
+      <section className="header-log-out">
+        <h2 className="header-log-out__app-name">Job Application Tracker</h2>
+      </section>
+    );
+  }
   if (hasUser) {
     return (
       <section className="header-log-in">
