@@ -24,7 +24,7 @@ const ApplicationListPage = () => {
         )}`,
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )
