@@ -23,7 +23,7 @@ const InterviewListPage = () => {
         )}`,
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )
@@ -41,7 +41,7 @@ const InterviewListPage = () => {
         `${API_BASE_URL}allInterviews/${sessionStorage.getItem("profileId")}`,
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )

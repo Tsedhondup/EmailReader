@@ -27,7 +27,7 @@ const AddApplication = () => {
         },
         {
           headers: {
-            session_id: sessionStorage.getItem("userId"),
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
           },
         }
       )
@@ -35,6 +35,7 @@ const AddApplication = () => {
         navigate("/applicationLists");
       })
       .catch((err) => {
+        console.log("errrrrr")
         navigate("/Login");
         console.log(err.message);
       });
