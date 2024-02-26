@@ -27,7 +27,6 @@ const Header = () => {
         })
         .then((response) => {
           setUser(response.data[0]);
-          console.log(response.data[0]);
         })
         .then(() => {
           setHasUser(true);
