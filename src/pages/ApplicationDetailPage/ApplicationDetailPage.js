@@ -70,7 +70,7 @@ const ApplicatioDetailPage = () => {
         },
       })
       .then((response) => {
-        setInterviews(response.data[0]);
+        setInterviews(response.data.interviewData);
       })
       .catch((err) => {
         navigate("/Login");
@@ -171,17 +171,22 @@ const ApplicatioDetailPage = () => {
               </Button>
             </h2>
             <div className="email-table-header">
-              <h3 className="email-table-header__subject">Subject</h3>
-              <h3 className="email-table-header__date">Date</h3>
-              <h3 className="email-table-header__time">Time</h3>
+              <h3 className="email-table-header__subject" key="subject">
+                Subject
+              </h3>
+              <h3 className="email-table-header__date" key="date">
+                Date
+              </h3>
+              <h3 className="email-table-header__time" key="time">
+                Time
+              </h3>
             </div>
             <div className="emails">
               {emails.map((item) => {
                 return (
-                  <div className="emails__content">
+                  <div className="emails__content" key={item.id}>
                     <Link
                       to={`/emailDetail/${item.id}`}
-                      key={item.id}
                       className="emails__email-item"
                     >
                       <span className="emails__email-item--subject">
