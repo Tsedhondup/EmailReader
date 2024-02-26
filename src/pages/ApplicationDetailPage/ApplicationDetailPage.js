@@ -147,7 +147,7 @@ const ApplicatioDetailPage = () => {
               <span className="application-detail__email-table-header--header">
                 Application history
               </span>
-              <button
+              {/* <button
                 onClick={() => {
                   handleFetchNewEmails(
                     emails[0].application_id,
@@ -157,7 +157,18 @@ const ApplicatioDetailPage = () => {
                 className="application-detail__email-table-header--fetch-new-button"
               >
                 fetch new email
-              </button>
+              </button> */}
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  handleFetchNewEmails(
+                    emails[0].application_id,
+                    emails[0].from
+                  );
+                }}
+              >
+                Refresh
+              </Button>
             </h2>
             <div className="email-table-header">
               <h3 className="email-table-header__subject">Subject</h3>
