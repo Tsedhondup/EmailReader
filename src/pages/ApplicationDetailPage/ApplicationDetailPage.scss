@@ -69,17 +69,21 @@
     color: #f4f1de;
   }
   .emails {
-    &__email-item {
-      text-decoration: none;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 50px;
-      padding: 10px;
+    &__content {
+      display: flex;
+      align-items: center;
+      padding: 4px 10px;
       border-radius: 4px;
       margin-bottom: 5px;
       transition: 0.2s;
       color: #81b29a;
       background-color: #f4f1de;
+    }
+    &__email-item {
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 50px;
 
       &--subject {
         max-width: 300px;

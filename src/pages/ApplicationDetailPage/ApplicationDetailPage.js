@@ -4,6 +4,9 @@ import "./ApplicationDetailPage.scss";
 import ApplicationListsSidebar from "../../components/ApplicationListsSidebar/ApplicationListsSidebar";
 import ApplicationDetailAnalytics from "../../components/ApplicationDetailAnalytics/ApplicationDetailAnalytics";
 import axios from "axios";
+// MATERIAL UI
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ApplicatioDetailPage = () => {
   const { id } = useParams();
@@ -164,21 +167,26 @@ const ApplicatioDetailPage = () => {
             <div className="emails">
               {emails.map((item) => {
                 return (
-                  <Link
-                    to={`/emailDetail/${item.id}`}
-                    key={item.id}
-                    className="emails__email-item"
-                  >
-                    <span className="emails__email-item--subject">
-                      {item.subject}
-                    </span>
-                    <span className="emails__email-item--date">
-                      {getDate(item.email_date)}
-                    </span>
-                    <span className="emails__email-item--time">
-                      {getTime(item.email_date)}
-                    </span>
-                  </Link>
+                  <div className="emails__content">
+                    <Link
+                      to={`/emailDetail/${item.id}`}
+                      key={item.id}
+                      className="emails__email-item"
+                    >
+                      <span className="emails__email-item--subject">
+                        {item.subject}
+                      </span>
+                      <span className="emails__email-item--date">
+                        {getDate(item.email_date)}
+                      </span>
+                      <span className="emails__email-item--time">
+                        {getTime(item.email_date)}
+                      </span>
+                    </Link>
+                    <Button variant="outlined" startIcon={<DeleteIcon />}>
+                      Delete
+                    </Button>
+                  </div>
                 );
               })}
             </div>
