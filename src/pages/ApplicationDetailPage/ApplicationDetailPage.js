@@ -4,6 +4,9 @@ import "./ApplicationDetailPage.scss";
 import ApplicationListsSidebar from "../../components/ApplicationListsSidebar/ApplicationListsSidebar";
 import ApplicationDetailAnalytics from "../../components/ApplicationDetailAnalytics/ApplicationDetailAnalytics";
 import axios from "axios";
+// MATERIAL UI
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ApplicatioDetailPage = () => {
   const { id } = useParams();
@@ -67,7 +70,7 @@ const ApplicatioDetailPage = () => {
         },
       })
       .then((response) => {
-        setInterviews(response.data[0]);
+        setInterviews(response.data.interviewData);
       })
       .catch((err) => {
         navigate("/Login");
@@ -144,7 +147,7 @@ const ApplicatioDetailPage = () => {
               <span className="application-detail__email-table-header--header">
                 Application history
               </span>
-              <button
+              {/* <button
                 onClick={() => {
                   handleFetchNewEmails(
                     emails[0].application_id,
@@ -154,31 +157,52 @@ const ApplicatioDetailPage = () => {
                 className="application-detail__email-table-header--fetch-new-button"
               >
                 fetch new email
-              </button>
+              </button> */}
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  handleFetchNewEmails(
+                    emails[0].application_id,
+                    emails[0].from
+                  );
+                }}
+              >
+                Refresh
+              </Button>
             </h2>
             <div className="email-table-header">
-              <h3 className="email-table-header__subject">Subject</h3>
-              <h3 className="email-table-header__date">Date</h3>
-              <h3 className="email-table-header__time">Time</h3>
+              <h3 className="email-table-header__subject" key="subject">
+                Subject
+              </h3>
+              <h3 className="email-table-header__date" key="date">
+                Date
+              </h3>
+              <h3 className="email-table-header__time" key="time">
+                Time
+              </h3>
             </div>
             <div className="emails">
               {emails.map((item) => {
                 return (
-                  <Link
-                    to={`/emailDetail/${item.id}`}
-                    key={item.id}
-                    className="emails__email-item"
-                  >
-                    <span className="emails__email-item--subject">
-                      {item.subject}
-                    </span>
-                    <span className="emails__email-item--date">
-                      {getDate(item.email_date)}
-                    </span>
-                    <span className="emails__email-item--time">
-                      {getTime(item.email_date)}
-                    </span>
-                  </Link>
+                  <div className="emails__content" key={item.id}>
+                    <Link
+                      to={`/emailDetail/${item.id}`}
+                      className="emails__email-item"
+                    >
+                      <span className="emails__email-item--subject">
+                        {item.subject}
+                      </span>
+                      <span className="emails__email-item--date">
+                        {getDate(item.email_date)}
+                      </span>
+                      <span className="emails__email-item--time">
+                        {getTime(item.email_date)}
+                      </span>
+                    </Link>
+                    <Button variant="outlined" startIcon={<DeleteIcon />}>
+                      Delete
+                    </Button>
+                  </div>
                 );
               })}
             </div>

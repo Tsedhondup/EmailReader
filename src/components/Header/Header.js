@@ -27,7 +27,6 @@ const Header = () => {
         })
         .then((response) => {
           setUser(response.data[0]);
-          console.log(response.data[0]);
         })
         .then(() => {
           setHasUser(true);
@@ -58,7 +57,7 @@ const Header = () => {
         <div className="header-log-in__content">
           <div className="app-logo">
             <Link className="app-logo__link">
-              <h2 className="app-logo__link--text">Job Application Tracker</h2>
+              <h2 className="app-logo__link--text">Managely</h2>
             </Link>
           </div>
 

@@ -46,18 +46,19 @@ const InterviewListPage = () => {
         }
       )
       .then((response) => {
-        setInterviewLists(response.data);
-        setScheduledInterviews(response.data.length);
+        setInterviewLists(response.data.interviewData);
+        setScheduledInterviews(response.data.interviewData.length);
         // VARIABLE TO STORE INTERVIEWS
         let activeInterviews = 0;
         let completedInterviews = 0;
+
         // SET INTERVIEW DATA
-        response.data.forEach((item) => {
+        response.data.interviewData.forEach((item) => {
           if (item.status === "active") {
             activeInterviews = activeInterviews + 1;
           }
         });
-        response.data.forEach((item) => {
+        response.data.interviewData.forEach((item) => {
           if (item.status === "completed") {
             completedInterviews = completedInterviews + 1;
           }
