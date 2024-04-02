@@ -74,6 +74,16 @@ const InterviewListPage = () => {
       });
   };
 
+  const handleInterviewStatus = (id) => {
+    const updateInterviews = interviewLists;
+    updateInterviews.forEach((interview) => {
+      if (interview.id === id) {
+        interview.status = "Completed";
+      }
+    });
+    setInterviewLists(updateInterviews);
+    console.log(interviewLists)
+  };
   const sortInterviewLists = (applicationId) => {
     let scheduled = 0;
     let actives = 0;
@@ -109,7 +119,7 @@ const InterviewListPage = () => {
     setScheduledInterviews(scheduled);
     setActiveInterviews(actives);
     setCompletedInterviews(completed);
-  };
+  }; 
 
   const renderSortedInterviews = () => {
     return sortedInterviews.map((item) => {
@@ -120,7 +130,14 @@ const InterviewListPage = () => {
           <p className="interview-table-data">
             {new Date(item.interview_date).toDateString()}
           </p>
-          <button id={item.id} className="interview-table-data change-button">
+          <button
+            id={item.id}
+            className="interview-table-data change-button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleInterviewStatus(item.id);
+            }}
+          >
             Change
           </button>
           <p className="interview-table-data">{item.status}</p>
@@ -137,7 +154,14 @@ const InterviewListPage = () => {
           <p className="interview-table-data">
             {new Date(item.interview_date).toDateString()}
           </p>
-          <button id={item.id} className="interview-table-data change-button">
+          <button
+            id={item.id}
+            className="interview-table-data change-button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleInterviewStatus(item.id);
+            }}
+          >
             Change
           </button>
           <p className="interview-table-data">{item.status}</p>
@@ -197,9 +221,34 @@ const InterviewListPage = () => {
               </h3>
             </section>
             <section className="interview-table-container__data">
-              {sortedInterviews.length > 0
+              {interviewLists.map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="interview-table-container__data--item"
+                  >
+                    <p className="interview-table-data">{item.company_name}</p>
+                    <p className="interview-table-data">{item.about}</p>
+                    <p className="interview-table-data">
+                      {new Date(item.interview_date).toDateString()}
+                    </p>
+                    <button
+                      id={item.id}
+                      className="interview-table-data change-button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        handleInterviewStatus(item.id);
+                      }}
+                    >
+                      Change
+                    </button>
+                    <p className="interview-table-data">{item.status}</p>
+                  </div>
+                );
+              })}
+              {/* {sortedInterviews.length > 0
                 ? renderSortedInterviews()
-                : renderUnsortedInterviews()}
+                : renderUnsortedInterviews()} */}
             </section>
           </section>
         </section>
