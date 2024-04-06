@@ -82,7 +82,7 @@ const InterviewListPage = () => {
       }
     });
     setInterviewLists(updateInterviews);
-    console.log(interviewLists)
+    console.log(interviewLists);
   };
   const sortInterviewLists = (applicationId) => {
     let scheduled = 0;
@@ -119,7 +119,7 @@ const InterviewListPage = () => {
     setScheduledInterviews(scheduled);
     setActiveInterviews(actives);
     setCompletedInterviews(completed);
-  }; 
+  };
 
   const renderSortedInterviews = () => {
     return sortedInterviews.map((item) => {
@@ -175,85 +175,98 @@ const InterviewListPage = () => {
   }, []);
 
   if (hasLoaded) {
-    return (
-      <article className="interview-list-container">
-        <section className="company-list-container">
-          {applications.map((item) => {
-            return (
-              <p
-                className="company-list-container__company"
-                key={item.id}
-                onClick={() => {
-                  sortInterviewLists(item.id);
-                }}
-              >
-                {item.company_name}
-              </p>
-            );
-          })}
-        </section>
-
-        <section className="interview-data-container">
-          <section className="interview-header-data-container">
-            <h1 className="interview-header-data-container__header">
-              Interview Lists
-            </h1>
-            <section className="interview-header-data-container__analytics">
-              <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
-              <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
-              <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
-            </section>
+    if (interviewLists.length === 0) {
+      return (
+        <h1>
+          You do not active any interview! Please schedule your up comming
+          interviews
+        </h1>
+      );
+    } else {
+      return (
+        <article className="interview-list-container">
+          <section className="company-list-container">
+            {applications.map((item) => {
+              return (
+                <p
+                  className="company-list-container__company"
+                  key={item.id}
+                  onClick={() => {
+                    sortInterviewLists(item.id);
+                  }}
+                >
+                  {item.company_name}
+                </p>
+              );
+            })}
           </section>
-          <section className="interview-table-container">
-            <section className="interview-table-container__headers">
-              <h3 className="interview-table-container__headers--name">
-                Company
-              </h3>
-              <h3 className="interview-table-container__headers--name">
-                About
-              </h3>
-              <h3 className="interview-table-container__headers--name">Date</h3>
-              <h3 className="interview-table-container__headers--name">
-                Reschedule
-              </h3>
-              <h3 className="interview-table-container__headers--name">
-                Status
-              </h3>
+
+          <section className="interview-data-container">
+            <section className="interview-header-data-container">
+              <h1 className="interview-header-data-container__header">
+                Interview Lists
+              </h1>
+              <section className="interview-header-data-container__analytics">
+                <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
+                <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
+                <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
+              </section>
             </section>
-            <section className="interview-table-container__data">
-              {interviewLists.map((item) => {
-                return (
-                  <div
-                    key={item.id}
-                    className="interview-table-container__data--item"
-                  >
-                    <p className="interview-table-data">{item.company_name}</p>
-                    <p className="interview-table-data">{item.about}</p>
-                    <p className="interview-table-data">
-                      {new Date(item.interview_date).toDateString()}
-                    </p>
-                    <button
-                      id={item.id}
-                      className="interview-table-data change-button"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        handleInterviewStatus(item.id);
-                      }}
+            <section className="interview-table-container">
+              <section className="interview-table-container__headers">
+                <h3 className="interview-table-container__headers--name">
+                  Company
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  About
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Date
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Reschedule
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Status
+                </h3>
+              </section>
+              <section className="interview-table-container__data">
+                {interviewLists.map((item) => {
+                  return (
+                    <div
+                      key={item.id}
+                      className="interview-table-container__data--item"
                     >
-                      Change
-                    </button>
-                    <p className="interview-table-data">{item.status}</p>
-                  </div>
-                );
-              })}
-              {/* {sortedInterviews.length > 0
+                      <p className="interview-table-data">
+                        {item.company_name}
+                      </p>
+                      <p className="interview-table-data">{item.about}</p>
+                      <p className="interview-table-data">
+                        {new Date(item.interview_date).toDateString()}
+                      </p>
+                      <button
+                        id={item.id}
+                        className="interview-table-data change-button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleInterviewStatus(item.id);
+                        }}
+                      >
+                        Change
+                      </button>
+                      <p className="interview-table-data">{item.status}</p>
+                    </div>
+                  );
+                })}
+                {/* {sortedInterviews.length > 0
                 ? renderSortedInterviews()
                 : renderUnsortedInterviews()} */}
+              </section>
             </section>
           </section>
-        </section>
-      </article>
-    );
+        </article>
+      );
+    }
   }
 
   if (!hasLoaded) {
