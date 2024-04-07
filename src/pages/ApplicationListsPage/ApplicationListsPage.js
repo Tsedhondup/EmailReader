@@ -76,6 +76,7 @@ const ApplicationListPage = () => {
               Date Applied
             </h3>
             <h3 className="application-table__item-header--time">Time</h3>
+            <h3 className="application-table__item-header--time">Status</h3>
           </section>
           <section className="application-table__item">
             {applicationLists.map((item) => {
@@ -89,7 +90,7 @@ const ApplicationListPage = () => {
                   <h2 className="position">{item.position}</h2>
                   <h2 className="date">{getDate(item.date_applied)}</h2>
                   <h2 className="time">{getTime(item.date_applied)}</h2>
-                  <h2 className="status">{getTime(item.status)}</h2>
+                  <h2 className="status">{item.status}</h2>
                 </Link>
               );
             })}

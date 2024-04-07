@@ -43,7 +43,7 @@
   }
   &__item-header {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     padding: 10px;
     color: #f4f1de;
     text-transform: uppercase;
@@ -65,7 +65,7 @@
   &__item {
     &--link {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       text-decoration: none;
       padding: 10px;
       background-color: #f4f1de;
