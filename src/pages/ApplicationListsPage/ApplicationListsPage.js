@@ -30,9 +30,6 @@ const ApplicationListPage = () => {
           },
         }
       )
-      .then((respond) => {
-        console.log(respond.data);
-      })
       .catch((err) => {
         console.log("cannot update application");
       });
