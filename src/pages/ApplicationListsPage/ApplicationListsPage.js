@@ -30,6 +30,7 @@ const ApplicationListPage = () => {
       )
       .then((respond) => {
         setApplicationLists(respond.data);
+        console.log(respond.data);
       })
       .then(() => {
         setHasLoaded(true);
@@ -88,6 +89,7 @@ const ApplicationListPage = () => {
                   <h2 className="position">{item.position}</h2>
                   <h2 className="date">{getDate(item.date_applied)}</h2>
                   <h2 className="time">{getTime(item.date_applied)}</h2>
+                  <h2 className="status">{getTime(item.status)}</h2>
                 </Link>
               );
             })}

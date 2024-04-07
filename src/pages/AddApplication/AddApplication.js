@@ -12,7 +12,6 @@ const AddApplication = () => {
   const [position, setPosition] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [status, setStatus] = useState("");
   // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState(new Date());
 
@@ -26,7 +25,7 @@ const AddApplication = () => {
           company_email: email,
           date_applied: startDate,
           position: position,
-          status: status,
+          status: "active", // default status of application after initial addition into database
         },
         {
           headers: {
