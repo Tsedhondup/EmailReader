@@ -90,7 +90,16 @@ const ApplicationListPage = () => {
                   <h2 className="position">{item.position}</h2>
                   <h2 className="date">{getDate(item.date_applied)}</h2>
                   <h2 className="time">{getTime(item.date_applied)}</h2>
-                  <h2 className="status">{item.status}</h2>
+                  <div className="status-option-container">
+                    <select className="status-option-container__options">
+                      <option value={item.status}>{item.status}</option>
+                      <option value="Applied">Applied</option>
+                      <option value="Processing">Processing</option>
+                      <option value="Offered">Offered</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </div>
                 </Link>
               );
             })}
