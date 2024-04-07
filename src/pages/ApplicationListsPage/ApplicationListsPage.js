@@ -81,17 +81,28 @@ const ApplicationListPage = () => {
           <section className="application-table__item">
             {applicationLists.map((item) => {
               return (
-                <Link
-                  to={`/applicationDetail/${item.id}`}
-                  key={item.id}
-                  className="application-table__item--link"
-                >
-                  <h2 className="company-name">{item.company_name}</h2>
-                  <h2 className="position">{item.position}</h2>
+                <div key={item.id} className="application-table__item--link">
+                  <Link
+                    className="company-name"
+                    to={`/applicationDetail/${item.id}`}
+                  >
+                    {item.company_name}
+                  </Link>
+                  <Link
+                    className="position"
+                    to={`/applicationDetail/${item.id}`}
+                  >
+                    {item.position}
+                  </Link>
                   <h2 className="date">{getDate(item.date_applied)}</h2>
                   <h2 className="time">{getTime(item.date_applied)}</h2>
-                  <div className="status-option-container">
-                    <select className="status-option-container__options">
+                  <div
+                    className="status-options-container"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                    }}
+                  >
+                    <select className="status-options-container__options">
                       <option value={item.status}>{item.status}</option>
                       <option value="Applied">Applied</option>
                       <option value="Processing">Processing</option>
@@ -100,7 +111,7 @@ const ApplicationListPage = () => {
                       <option value="Rejected">Rejected</option>
                     </select>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </section>
