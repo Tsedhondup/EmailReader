@@ -16,6 +16,27 @@ const ApplicationListPage = () => {
     const dateArray = new Date(dateData).toLocaleString().split(",");
     return dateArray[1];
   };
+
+  const handleApplicationStatus = (event) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateApplication/${event.target.id}`,
+        {
+          status: event.target.value,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .then((respond) => {
+        console.log(respond.data);
+      })
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
   const getApplicationLists = () => {
     axios
       .get(
@@ -30,7 +51,6 @@ const ApplicationListPage = () => {
       )
       .then((respond) => {
         setApplicationLists(respond.data);
-        console.log(respond.data);
       })
       .then(() => {
         setHasLoaded(true);
@@ -102,7 +122,13 @@ const ApplicationListPage = () => {
                       event.stopPropagation();
                     }}
                   >
-                    <select className="status-options-container__options">
+                    <select
+                      id={item.id}
+                      className="status-options-container__options"
+                      onChange={(event) => {
+                        handleApplicationStatus(event);
+                      }}
+                    >
                       <option value={item.status}>{item.status}</option>
                       <option value="Applied">Applied</option>
                       <option value="Processing">Processing</option>
