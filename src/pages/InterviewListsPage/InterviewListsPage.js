@@ -227,7 +227,7 @@ const InterviewListPage = () => {
                   Reschedule
                 </h3>
                 <h3 className="interview-table-container__headers--name">
-                  Status
+                  Action
                 </h3>
               </section>
               <section className="interview-table-container__data">
@@ -254,7 +254,13 @@ const InterviewListPage = () => {
                       >
                         Change
                       </button>
-                      <p className="interview-table-data">{item.status}</p>
+                      {/* <p className="interview-table-data">{item.status}</p> */}
+                      <select id={item.id} className="interview-table-data">
+                        <option value={item.status}>{item.status}</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Cancel">Cancel</option>
+                      </select>
                     </div>
                   );
                 })}
