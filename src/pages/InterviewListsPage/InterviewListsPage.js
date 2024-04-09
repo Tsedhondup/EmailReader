@@ -84,6 +84,23 @@ const InterviewListPage = () => {
     setInterviewLists(updateInterviews);
     console.log(interviewLists);
   };
+  const handleInterviewAction = (event) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateInterview/${event.target.id}`,
+        {
+          status: event.target.value,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
   const sortInterviewLists = (applicationId) => {
     let scheduled = 0;
     let actives = 0;
@@ -255,7 +272,13 @@ const InterviewListPage = () => {
                         Change
                       </button>
                       {/* <p className="interview-table-data">{item.status}</p> */}
-                      <select id={item.id} className="interview-table-data">
+                      <select
+                        id={item.id}
+                        className="interview-table-data"
+                        onChange={(event) => {
+                          handleInterviewAction(event);
+                        }}
+                      >
                         <option value={item.status}>{item.status}</option>
                         <option value="Completed">Completed</option>
                         <option value="Pending">Pending</option>
