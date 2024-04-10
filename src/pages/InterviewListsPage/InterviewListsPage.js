@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+
 import axios from "axios";
 import "./InterviewListsPage.scss";
 const InterviewListPage = () => {
@@ -12,6 +14,8 @@ const InterviewListPage = () => {
   const [scheduledInterviews, setScheduledInterviews] = useState("");
   const [activeInterviews, setActiveInterviews] = useState("");
   const [completedInterviews, setCompletedInterviews] = useState("");
+  // NPM DATE LIBRARY
+  const [startDate, setStartDate] = useState();
 
   const navigate = useNavigate();
 
@@ -263,7 +267,7 @@ const InterviewListPage = () => {
                       </p>
                       <button
                         id={item.id}
-                        className="interview-table-data change-button"
+                        className={`interview-table-data change-button`}
                         onClick={(event) => {
                           event.stopPropagation();
                           handleInterviewStatus(item.id);
@@ -271,6 +275,13 @@ const InterviewListPage = () => {
                       >
                         Change
                       </button>
+                      {/* {setStartDate(new Date(item.interview_date))} */}
+                      <DatePicker
+                        id="date"
+                        className={`form-container__form--input`}
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                      />
                       {/* <p className="interview-table-data">{item.status}</p> */}
                       <select
                         id={item.id}
