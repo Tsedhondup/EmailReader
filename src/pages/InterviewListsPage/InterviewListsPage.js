@@ -14,6 +14,9 @@ const InterviewListPage = () => {
   const [scheduledInterviews, setScheduledInterviews] = useState("");
   const [activeInterviews, setActiveInterviews] = useState("");
   const [completedInterviews, setCompletedInterviews] = useState("");
+  const [changeButtonClass, setChangeButtonClass] = useState("display-hidden");
+  const [changeDateClass, setChangeDateClass] = useState("display-show");
+
   // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState();
 
