@@ -89,6 +89,13 @@
       border: solid 1px #e07a5f;
       background-color: #e07a5f;
     }
+    // Change button and date picker dynamic :no-button
+    .display-show {
+      display: block;
+    }
+    .display-hidden {
+      display: none;
+    }
   }
 }
 .interview-loader {
