@@ -16,9 +16,8 @@ const InterviewListPage = () => {
   const [completedInterviews, setCompletedInterviews] = useState("");
   const [changeButtonClass, setChangeButtonClass] = useState("display-hidden");
   const [changeDateClass, setChangeDateClass] = useState("display-show");
-
   // NPM DATE LIBRARY
-  const [startDate, setStartDate] = useState();
+  const [startDate, setStartDate] = useState(new Date());
 
   const navigate = useNavigate();
 
@@ -193,6 +192,8 @@ const InterviewListPage = () => {
       );
     });
   };
+
+  const handleChageDateElementClasses = (elClassName) => {};
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
