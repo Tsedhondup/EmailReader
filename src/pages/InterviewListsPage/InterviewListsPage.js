@@ -193,7 +193,10 @@ const InterviewListPage = () => {
     });
   };
 
-  const handleChageDateElementClasses = (elClassName) => {};
+  const handleChageDateElementClasses = (elClassName) => {
+    setChangeDateClass("display-show");
+    setChangeButtonClass("display-hidden");
+  };
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
@@ -276,7 +279,7 @@ const InterviewListPage = () => {
                           className={`interview-table-data change-button ${changeButtonClass}`}
                           onClick={(event) => {
                             event.stopPropagation();
-                            handleInterviewStatus(item.id);
+                            handleChageDateElementClasses();
                           }}
                         >
                           Change
