@@ -207,10 +207,13 @@ const InterviewListPage = () => {
      * set the state variable containing the list of interview items
      */
 
-    const newInterviewList = interviewLists.filter((item) => {
+    const newInterviewList = interviewLists.map((item) => {
       if (item.id === interviewId) {
+        item.datePicker = true;
       }
+      return item;
     });
+    setInterviewLists(newInterviewList);
   };
 
   useEffect(() => {
@@ -296,6 +299,7 @@ const InterviewListPage = () => {
                           onClick={(event) => {
                             event.stopPropagation();
                             handleChageDateElementClasses(item.id);
+                            handleDatePicker(item.id);
                           }}
                         >
                           Change
