@@ -332,6 +332,7 @@ const InterviewListPage = () => {
                               onChange={(date) => setStartDate(date)}
                             />
                             <button
+                              disabled={startDate ? false : true}
                               onClick={() => {
                                 handleInterviewDateUpdate(item.id);
                               }}
