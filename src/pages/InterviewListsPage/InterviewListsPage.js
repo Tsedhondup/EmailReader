@@ -90,7 +90,7 @@ const InterviewListPage = () => {
     setInterviewLists(updateInterviews);
     console.log(interviewLists);
   };
-  const handleInterviewAction = (event) => {
+  const handleInterviewActionUpdate = (event) => {
     axios
       .patch(
         `${API_BASE_URL}updateInterview/${event.target.id}`,
@@ -321,7 +321,7 @@ const InterviewListPage = () => {
                         id={item.id}
                         className="interview-table-data"
                         onChange={(event) => {
-                          handleInterviewAction(event);
+                          handleInterviewActionUpdate(event);
                         }}
                       >
                         <option value={item.status}>{item.status}</option>
