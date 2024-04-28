@@ -107,6 +107,24 @@ const InterviewListPage = () => {
         console.log("cannot update application");
       });
   };
+
+  const handleInterviewDateUpdate = (interviewId) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateInterview/${interviewId}`,
+        {
+          interview_date: startDate,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
   const sortInterviewLists = (applicationId) => {
     let scheduled = 0;
     let actives = 0;
