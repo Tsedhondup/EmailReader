@@ -17,7 +17,7 @@ const InterviewListPage = () => {
   const [changeButtonClass, setChangeButtonClass] = useState("display-show");
   const [changeDateClass, setChangeDateClass] = useState("display-hidden");
   // NPM DATE LIBRARY
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
 
   const navigate = useNavigate();
 
@@ -214,6 +214,8 @@ const InterviewListPage = () => {
     getAllInterviews();
   }, []);
 
+  useEffect(() => {}, [startDate]);
+
   if (hasLoaded) {
     if (interviewLists.length === 0) {
       return (
@@ -300,12 +302,16 @@ const InterviewListPage = () => {
                             Change
                           </button>
                         )}
+
                         {item.datePicker ? (
-                          <DatePicker
-                            id="date"
-                            selected={startDate}
-                            onChange={(date) => setStartDate(date)}
-                          />
+                          <>
+                            <DatePicker
+                              id="date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                            />
+                            <button onClick={() => {}}>confirm</button>
+                          </>
                         ) : (
                           <div></div>
                         )}
