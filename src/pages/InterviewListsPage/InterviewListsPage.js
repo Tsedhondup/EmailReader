@@ -198,18 +198,11 @@ const InterviewListPage = () => {
     setChangeButtonClass("display-hidden");
   };
   const handleDatePicker = (interviewId) => {
-    /*
-     * take the id of the clicked interview
-     * loop through the state variable containing the lists of interviews
-     * get the interview with matched id
-     * and display-show class to the date picker element of that interview item
-     * store the mutated interview in new array
-     * set the state variable containing the list of interview items
-     */
-
     const newInterviewList = interviewLists.map((item) => {
       if (item.id === interviewId) {
         item.datePicker = true;
+      } else {
+        item.datePicker = false;
       }
       return item;
     });
