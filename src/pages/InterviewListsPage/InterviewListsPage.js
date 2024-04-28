@@ -293,7 +293,7 @@ const InterviewListPage = () => {
                       </p>
 
                       <section>
-                        <button
+                        {/* <button
                           id={item.id}
                           className={`interview-table-data change-button ${changeButtonClass}`}
                           onClick={(event) => {
@@ -303,14 +303,40 @@ const InterviewListPage = () => {
                           }}
                         >
                           Change
-                        </button>
+                        </button> */}
+
+                        {item.datePicker ? (
+                          <div></div>
+                        ) : (
+                          <button
+                            id={item.id}
+                            className={`interview-table-data change-button ${changeButtonClass}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              // handleChageDateElementClasses(item.id);
+                              handleDatePicker(item.id);
+                            }}
+                          >
+                            Change
+                          </button>
+                        )}
                         {/* {setStartDate(new Date(item.interview_date))} */}
-                        <DatePicker
+                        {item.datePicker ? (
+                          <DatePicker
+                            id="date"
+                            // className={`${changeDateClass}`}
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
+                          />
+                        ) : (
+                          <div></div>
+                        )}
+                        {/* <DatePicker
                           id="date"
                           className={`${changeDateClass}`}
                           selected={startDate}
                           onChange={(date) => setStartDate(date)}
-                        />
+                        /> */}
                       </section>
 
                       {/* <p className="interview-table-data">{item.status}</p> */}
@@ -329,7 +355,7 @@ const InterviewListPage = () => {
                     </div>
                   );
                 })}
-                {/* {sortedInterviews.length > 0
+                {/* {sortedInterviews.length > 
                 ? renderSortedInterviews()
                 : renderUnsortedInterviews()} */}
               </section>

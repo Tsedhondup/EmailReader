@@ -25,7 +25,8 @@ const AddApplication = () => {
           company_email: email,
           date_applied: startDate,
           position: position,
-          status: "active", // default status of application after initial addition into database
+          status: "active",
+          // default status of application after initial addition into database
         },
         {
           headers: {
