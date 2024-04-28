@@ -121,6 +121,9 @@ const InterviewListPage = () => {
           },
         }
       )
+      .then(() => {
+        getAllInterviews();
+      })
       .catch((err) => {
         console.log("cannot update application");
       });
@@ -328,7 +331,13 @@ const InterviewListPage = () => {
                               selected={startDate}
                               onChange={(date) => setStartDate(date)}
                             />
-                            <button onClick={() => {}}>confirm</button>
+                            <button
+                              onClick={() => {
+                                handleInterviewDateUpdate(item.id);
+                              }}
+                            >
+                              confirm
+                            </button>
                           </>
                         ) : (
                           <div></div>
