@@ -339,6 +339,15 @@ const InterviewListPage = () => {
                             >
                               confirm
                             </button>
+                            <button
+                              disabled={startDate ? false : true}
+                              onClick={() => {
+                                setStartDate();
+                                getAllInterviews();
+                              }}
+                            >
+                              cancel
+                            </button>
                           </>
                         ) : (
                           <div></div>
