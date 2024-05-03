@@ -67,16 +67,16 @@
       margin-bottom: 5px;
       transition: 0.2s;
     }
-    &--item:hover {
-      background-color: #e07a5f;
-      .change-button {
-        // background-color: #f4f1de;
-        color: #3d405b;
-      }
-      .interview-table-data {
-        color: #f4f1de;
-      }
-    }
+    // &--item:hover {
+    //   background-color: #e07a5f;
+    //   .change-button {
+    //     // background-color: #f4f1de;
+    //     color: #3d405b;
+    //   }
+    //   .interview-table-data {
+    //     color: #f4f1de;
+    //   }
+    // }
     .interview-table-data {
       color: #3d405b;
     }
@@ -88,6 +88,13 @@
       color: #f4f1de;
       border: solid 1px #e07a5f;
       background-color: #e07a5f;
+    }
+    // Change button and date picker dynamic :no-button
+    .display-show {
+      display: block;
+    }
+    .display-hidden {
+      display: none;
     }
   }
 }

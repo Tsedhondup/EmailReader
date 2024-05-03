@@ -16,6 +16,24 @@ const ApplicationListPage = () => {
     const dateArray = new Date(dateData).toLocaleString().split(",");
     return dateArray[1];
   };
+
+  const handleApplicationStatus = (event) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateApplication/${event.target.id}`,
+        {
+          status: event.target.value,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
   const getApplicationLists = () => {
     axios
       .get(
@@ -75,20 +93,48 @@ const ApplicationListPage = () => {
               Date Applied
             </h3>
             <h3 className="application-table__item-header--time">Time</h3>
+            <h3 className="application-table__item-header--time">Status</h3>
           </section>
           <section className="application-table__item">
             {applicationLists.map((item) => {
               return (
-                <Link
-                  to={`/applicationDetail/${item.id}`}
-                  key={item.id}
-                  className="application-table__item--link"
-                >
-                  <h2 className="company-name">{item.company_name}</h2>
-                  <h2 className="position">{item.position}</h2>
+                <div key={item.id} className="application-table__item--link">
+                  <Link
+                    className="company-name"
+                    to={`/applicationDetail/${item.id}`}
+                  >
+                    {item.company_name}
+                  </Link>
+                  <Link
+                    className="position"
+                    to={`/applicationDetail/${item.id}`}
+                  >
+                    {item.position}
+                  </Link>
                   <h2 className="date">{getDate(item.date_applied)}</h2>
                   <h2 className="time">{getTime(item.date_applied)}</h2>
-                </Link>
+                  <div
+                    className="status-options-container"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                    }}
+                  >
+                    <select
+                      id={item.id}
+                      className="status-options-container__options"
+                      onChange={(event) => {
+                        handleApplicationStatus(event);
+                      }}
+                    >
+                      <option value={item.status}>{item.status}</option>
+                      <option value="Applied">Applied</option>
+                      <option value="Processing">Processing</option>
+                      <option value="Offered">Offered</option>
+                      <option value="Accepted">Accepted</option>
+                      <option value="Rejected">Rejected</option>
+                    </select>
+                  </div>
+                </div>
               );
             })}
           </section>

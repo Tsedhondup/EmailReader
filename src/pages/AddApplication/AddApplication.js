@@ -12,6 +12,7 @@ const AddApplication = () => {
   const [position, setPosition] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState(new Date());
 
   const handleAddApplication = () => {
@@ -24,6 +25,8 @@ const AddApplication = () => {
           company_email: email,
           date_applied: startDate,
           position: position,
+          status: "active",
+          // default status of application after initial addition into database
         },
         {
           headers: {
@@ -35,7 +38,6 @@ const AddApplication = () => {
         navigate("/applicationLists");
       })
       .catch((err) => {
-        console.log("errrrrr")
         navigate("/Login");
         console.log(err.message);
       });

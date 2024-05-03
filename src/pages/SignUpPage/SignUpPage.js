@@ -33,6 +33,7 @@ const SignUpPage = () => {
       })
       .then((response) => {
         sessionStorage.authToken = response.data.token;
+        sessionStorage.profileId = response.data.profileId;
       })
       .then(() => {
         navigate("/applicationLists");

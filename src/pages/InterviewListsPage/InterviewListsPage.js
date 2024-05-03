@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+
 import axios from "axios";
 import "./InterviewListsPage.scss";
 const InterviewListPage = () => {
@@ -12,6 +14,10 @@ const InterviewListPage = () => {
   const [scheduledInterviews, setScheduledInterviews] = useState("");
   const [activeInterviews, setActiveInterviews] = useState("");
   const [completedInterviews, setCompletedInterviews] = useState("");
+  const [changeButtonClass, setChangeButtonClass] = useState("display-show");
+  const [changeDateClass, setChangeDateClass] = useState("display-hidden");
+  // NPM DATE LIBRARY
+  const [startDate, setStartDate] = useState();
 
   const navigate = useNavigate();
 
@@ -74,6 +80,54 @@ const InterviewListPage = () => {
       });
   };
 
+  const handleInterviewStatus = (id) => {
+    const updateInterviews = interviewLists;
+    updateInterviews.forEach((interview) => {
+      if (interview.id === id) {
+        interview.status = "Completed";
+      }
+    });
+    setInterviewLists(updateInterviews);
+    console.log(interviewLists);
+  };
+  const handleInterviewActionUpdate = (event) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateInterview/${event.target.id}`,
+        {
+          status: event.target.value,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
+
+  const handleInterviewDateUpdate = (interviewId) => {
+    axios
+      .patch(
+        `${API_BASE_URL}updateInterview/${interviewId}`,
+        {
+          interview_date: startDate,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        }
+      )
+      .then(() => {
+        getAllInterviews();
+      })
+      .catch((err) => {
+        console.log("cannot update application");
+      });
+  };
   const sortInterviewLists = (applicationId) => {
     let scheduled = 0;
     let actives = 0;
@@ -120,7 +174,14 @@ const InterviewListPage = () => {
           <p className="interview-table-data">
             {new Date(item.interview_date).toDateString()}
           </p>
-          <button id={item.id} className="interview-table-data change-button">
+          <button
+            id={item.id}
+            className="interview-table-data change-button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleInterviewStatus(item.id);
+            }}
+          >
             Change
           </button>
           <p className="interview-table-data">{item.status}</p>
@@ -137,7 +198,14 @@ const InterviewListPage = () => {
           <p className="interview-table-data">
             {new Date(item.interview_date).toDateString()}
           </p>
-          <button id={item.id} className="interview-table-data change-button">
+          <button
+            id={item.id}
+            className="interview-table-data change-button"
+            onClick={(event) => {
+              event.stopPropagation();
+              handleInterviewStatus(item.id);
+            }}
+          >
             Change
           </button>
           <p className="interview-table-data">{item.status}</p>
@@ -145,66 +213,171 @@ const InterviewListPage = () => {
       );
     });
   };
+
+  const handleChageDateElementClasses = (elClassName) => {
+    setChangeDateClass("display-show");
+    setChangeButtonClass("display-hidden");
+  };
+  const handleDatePicker = (interviewId) => {
+    const newInterviewList = interviewLists.map((item) => {
+      if (item.id === interviewId) {
+        item.datePicker = true;
+      } else {
+        item.datePicker = false;
+      }
+      return item;
+    });
+    setInterviewLists(newInterviewList);
+  };
+
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
   }, []);
 
-  if (hasLoaded) {
-    return (
-      <article className="interview-list-container">
-        <section className="company-list-container">
-          {applications.map((item) => {
-            return (
-              <p
-                className="company-list-container__company"
-                key={item.id}
-                onClick={() => {
-                  sortInterviewLists(item.id);
-                }}
-              >
-                {item.company_name}
-              </p>
-            );
-          })}
-        </section>
+  useEffect(() => {}, [startDate]);
 
-        <section className="interview-data-container">
-          <section className="interview-header-data-container">
-            <h1 className="interview-header-data-container__header">
-              Interview Lists
-            </h1>
-            <section className="interview-header-data-container__analytics">
-              <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
-              <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
-              <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
-            </section>
+  if (hasLoaded) {
+    if (interviewLists.length === 0) {
+      return (
+        <h1>
+          You do not active any interview! Please schedule your up comming
+          interviews
+        </h1>
+      );
+    } else {
+      return (
+        <article className="interview-list-container">
+          <section className="company-list-container">
+            {applications.map((item) => {
+              return (
+                <p
+                  className="company-list-container__company"
+                  key={item.id}
+                  onClick={() => {
+                    sortInterviewLists(item.id);
+                  }}
+                >
+                  {item.company_name}
+                </p>
+              );
+            })}
           </section>
-          <section className="interview-table-container">
-            <section className="interview-table-container__headers">
-              <h3 className="interview-table-container__headers--name">
-                Company
-              </h3>
-              <h3 className="interview-table-container__headers--name">
-                About
-              </h3>
-              <h3 className="interview-table-container__headers--name">Date</h3>
-              <h3 className="interview-table-container__headers--name">
-                Reschedule
-              </h3>
-              <h3 className="interview-table-container__headers--name">
-                Status
-              </h3>
+
+          <section className="interview-data-container">
+            <section className="interview-header-data-container">
+              <h1 className="interview-header-data-container__header">
+                Interview Lists
+              </h1>
+              <section className="interview-header-data-container__analytics">
+                <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
+                <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
+                <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
+              </section>
             </section>
-            <section className="interview-table-container__data">
-              {sortedInterviews.length > 0
+            <section className="interview-table-container">
+              <section className="interview-table-container__headers">
+                <h3 className="interview-table-container__headers--name">
+                  Company
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  About
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Date
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Reschedule
+                </h3>
+                <h3 className="interview-table-container__headers--name">
+                  Action
+                </h3>
+              </section>
+              <section className="interview-table-container__data">
+                {interviewLists.map((item) => {
+                  return (
+                    <div
+                      key={item.id}
+                      className="interview-table-container__data--item"
+                    >
+                      <p className="interview-table-data">
+                        {item.company_name}
+                      </p>
+                      <p className="interview-table-data">{item.about}</p>
+                      <p className="interview-table-data">
+                        {new Date(item.interview_date).toDateString()}
+                      </p>
+
+                      <section>
+                        {item.datePicker ? (
+                          <div></div>
+                        ) : (
+                          <button
+                            id={item.id}
+                            className={`interview-table-data change-button ${changeButtonClass}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleDatePicker(item.id);
+                            }}
+                          >
+                            Change
+                          </button>
+                        )}
+
+                        {item.datePicker ? (
+                          <>
+                            <DatePicker
+                              id="date"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                            />
+                            <button
+                              disabled={startDate ? false : true}
+                              onClick={() => {
+                                handleInterviewDateUpdate(item.id);
+                              }}
+                            >
+                              confirm
+                            </button>
+                            <button
+                              disabled={startDate ? false : true}
+                              onClick={() => {
+                                setStartDate();
+                                getAllInterviews();
+                              }}
+                            >
+                              cancel
+                            </button>
+                          </>
+                        ) : (
+                          <div></div>
+                        )}
+                      </section>
+
+                      <select
+                        id={item.id}
+                        className="interview-table-data"
+                        onChange={(event) => {
+                          handleInterviewActionUpdate(event);
+                        }}
+                      >
+                        <option value={item.status}>{item.status}</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Cancel">Cancel</option>
+                      </select>
+                    </div>
+                  );
+                })}
+                {/* {sortedInterviews.length > 
                 ? renderSortedInterviews()
-                : renderUnsortedInterviews()}
+                : renderUnsortedInterviews()} */}
+              </section>
             </section>
           </section>
-        </section>
-      </article>
-    );
+        </article>
+      );
+    }
   }
 
   if (!hasLoaded) {
