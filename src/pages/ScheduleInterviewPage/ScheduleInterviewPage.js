@@ -50,6 +50,9 @@ const ScheduleInterviewPage = () => {
         console.log(err.message);
       });
   };
+  const handleValidation = () => {
+    // this function handles form validation
+  };
   useEffect(() => {
     axios
       .get(

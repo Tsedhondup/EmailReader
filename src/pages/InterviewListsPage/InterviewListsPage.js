@@ -230,9 +230,6 @@ const InterviewListPage = () => {
     setInterviewLists(newInterviewList);
   };
 
-  const handleValidation = () => {
-    // this function handles form validation
-  };
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
