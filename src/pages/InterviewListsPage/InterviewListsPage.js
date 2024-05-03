@@ -16,7 +16,6 @@ const InterviewListPage = () => {
   const [completedInterviews, setCompletedInterviews] = useState("");
   const [changeButtonClass, setChangeButtonClass] = useState("display-show");
   const [changeDateClass, setChangeDateClass] = useState("display-hidden");
-  const [isFormCompleted, setIsFormCompleted] = useState(false);
   // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState();
 

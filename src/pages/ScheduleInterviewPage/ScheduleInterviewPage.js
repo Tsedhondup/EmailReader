@@ -12,6 +12,7 @@ const ScheduleInterviewPage = () => {
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isFormCompleted, setIsFormCompleted] = useState(false);
 
   const navigate = useNavigate();
 
