@@ -16,6 +16,7 @@ const InterviewListPage = () => {
   const [completedInterviews, setCompletedInterviews] = useState("");
   const [changeButtonClass, setChangeButtonClass] = useState("display-show");
   const [changeDateClass, setChangeDateClass] = useState("display-hidden");
+  const [followUpClass, setFollowUpClass] = useState("");
   // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState();
 
@@ -251,7 +252,7 @@ const InterviewListPage = () => {
     } else {
       return (
         <>
-          <div className={`follow-up`}>
+          <div className={`follow-up ${followUpClass}`}>
             <h3 className="follo-up__header">Write follow up email</h3>
             <Link to="/FollowUpEmailPage">
               <button className="follow-up__button-continue">Continue</button>
