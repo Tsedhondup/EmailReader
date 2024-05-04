@@ -230,6 +230,9 @@ const InterviewListPage = () => {
     setInterviewLists(newInterviewList);
   };
 
+  const handleFollowUpEmail = () => {
+    // function for follow up email
+  };
   useEffect(() => {
     getAllApplications();
     getAllInterviews();
@@ -359,6 +362,7 @@ const InterviewListPage = () => {
                         className="interview-table-data"
                         onChange={(event) => {
                           handleInterviewActionUpdate(event);
+                          handleFollowUpEmail(event);
                         }}
                       >
                         <option value={item.status}>{item.status}</option>
