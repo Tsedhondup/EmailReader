@@ -7,9 +7,9 @@ const FollowUpEmailPage = () => {
           event.preventDefault();
         }}
       >
-        <input>Recipient</input>
-        <subject>SubjectF</subject>
-        <textarea>Write your messages</textarea>
+        <input type="text" placeholder="Recipient" />
+        <input type="text" placeholder="Subject" />
+        <textarea type="text" placeholder="Write your message" />
         <button>Send</button>
       </form>
     </>
