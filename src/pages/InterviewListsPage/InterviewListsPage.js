@@ -250,137 +250,144 @@ const InterviewListPage = () => {
       );
     } else {
       return (
-        <article className="interview-list-container">
-          <section className="company-list-container">
-            {applications.map((item) => {
-              return (
-                <p
-                  className="company-list-container__company"
-                  key={item.id}
-                  onClick={() => {
-                    sortInterviewLists(item.id);
-                  }}
-                >
-                  {item.company_name}
-                </p>
-              );
-            })}
-          </section>
-
-          <section className="interview-data-container">
-            <section className="interview-header-data-container">
-              <h1 className="interview-header-data-container__header">
-                Interview Lists
-              </h1>
-              <section className="interview-header-data-container__analytics">
-                <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
-                <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
-                <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
-              </section>
+        <>
+          <div className={`follow-up`}>
+            <h3 className="follo-up__header">Write follow up email</h3>
+            <button className="follow-up__button-continue">Continue</button>
+            <button className="follow-up__button-skip">skip</button>
+          </div>
+          <article className="interview-list-container">
+            <section className="company-list-container">
+              {applications.map((item) => {
+                return (
+                  <p
+                    className="company-list-container__company"
+                    key={item.id}
+                    onClick={() => {
+                      sortInterviewLists(item.id);
+                    }}
+                  >
+                    {item.company_name}
+                  </p>
+                );
+              })}
             </section>
-            <section className="interview-table-container">
-              <section className="interview-table-container__headers">
-                <h3 className="interview-table-container__headers--name">
-                  Company
-                </h3>
-                <h3 className="interview-table-container__headers--name">
-                  About
-                </h3>
-                <h3 className="interview-table-container__headers--name">
-                  Date
-                </h3>
-                <h3 className="interview-table-container__headers--name">
-                  Reschedule
-                </h3>
-                <h3 className="interview-table-container__headers--name">
-                  Action
-                </h3>
+
+            <section className="interview-data-container">
+              <section className="interview-header-data-container">
+                <h1 className="interview-header-data-container__header">
+                  Interview Lists
+                </h1>
+                <section className="interview-header-data-container__analytics">
+                  <h3 className="interview-header-data-container__analytics--data">{`Scheduled: ${scheduledInterviews}`}</h3>
+                  <h3 className="interview-header-data-container__analytics--data">{`Active: ${activeInterviews}`}</h3>
+                  <h3 className="interview-header-data-container__analytics--data">{`Completed: ${completedInterviews}`}</h3>
+                </section>
               </section>
-              <section className="interview-table-container__data">
-                {interviewLists.map((item) => {
-                  return (
-                    <div
-                      key={item.id}
-                      className="interview-table-container__data--item"
-                    >
-                      <p className="interview-table-data">
-                        {item.company_name}
-                      </p>
-                      <p className="interview-table-data">{item.about}</p>
-                      <p className="interview-table-data">
-                        {new Date(item.interview_date).toDateString()}
-                      </p>
-
-                      <section>
-                        {item.datePicker ? (
-                          <div></div>
-                        ) : (
-                          <button
-                            id={item.id}
-                            className={`interview-table-data change-button ${changeButtonClass}`}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              handleDatePicker(item.id);
-                            }}
-                          >
-                            Change
-                          </button>
-                        )}
-
-                        {item.datePicker ? (
-                          <>
-                            <DatePicker
-                              id="date"
-                              selected={startDate}
-                              onChange={(date) => setStartDate(date)}
-                            />
-                            <button
-                              disabled={startDate ? false : true}
-                              onClick={() => {
-                                handleInterviewDateUpdate(item.id);
-                              }}
-                            >
-                              confirm
-                            </button>
-                            <button
-                              disabled={startDate ? false : true}
-                              onClick={() => {
-                                setStartDate();
-                                getAllInterviews();
-                              }}
-                            >
-                              cancel
-                            </button>
-                          </>
-                        ) : (
-                          <div></div>
-                        )}
-                      </section>
-
-                      <select
-                        id={item.id}
-                        className="interview-table-data"
-                        onChange={(event) => {
-                          handleInterviewActionUpdate(event);
-                          handleFollowUpEmail(event);
-                        }}
+              <section className="interview-table-container">
+                <section className="interview-table-container__headers">
+                  <h3 className="interview-table-container__headers--name">
+                    Company
+                  </h3>
+                  <h3 className="interview-table-container__headers--name">
+                    About
+                  </h3>
+                  <h3 className="interview-table-container__headers--name">
+                    Date
+                  </h3>
+                  <h3 className="interview-table-container__headers--name">
+                    Reschedule
+                  </h3>
+                  <h3 className="interview-table-container__headers--name">
+                    Action
+                  </h3>
+                </section>
+                <section className="interview-table-container__data">
+                  {interviewLists.map((item) => {
+                    return (
+                      <div
+                        key={item.id}
+                        className="interview-table-container__data--item"
                       >
-                        <option value={item.status}>{item.status}</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Cancel">Cancel</option>
-                        <option value="Active">Active</option>
-                      </select>
-                    </div>
-                  );
-                })}
-                {/* {sortedInterviews.length > 
+                        <p className="interview-table-data">
+                          {item.company_name}
+                        </p>
+                        <p className="interview-table-data">{item.about}</p>
+                        <p className="interview-table-data">
+                          {new Date(item.interview_date).toDateString()}
+                        </p>
+
+                        <section>
+                          {item.datePicker ? (
+                            <div></div>
+                          ) : (
+                            <button
+                              id={item.id}
+                              className={`interview-table-data change-button ${changeButtonClass}`}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                handleDatePicker(item.id);
+                              }}
+                            >
+                              Change
+                            </button>
+                          )}
+
+                          {item.datePicker ? (
+                            <>
+                              <DatePicker
+                                id="date"
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)}
+                              />
+                              <button
+                                disabled={startDate ? false : true}
+                                onClick={() => {
+                                  handleInterviewDateUpdate(item.id);
+                                }}
+                              >
+                                confirm
+                              </button>
+                              <button
+                                disabled={startDate ? false : true}
+                                onClick={() => {
+                                  setStartDate();
+                                  getAllInterviews();
+                                }}
+                              >
+                                cancel
+                              </button>
+                            </>
+                          ) : (
+                            <div></div>
+                          )}
+                        </section>
+
+                        <select
+                          id={item.id}
+                          className="interview-table-data"
+                          onChange={(event) => {
+                            handleInterviewActionUpdate(event);
+                            handleFollowUpEmail(event);
+                          }}
+                        >
+                          <option value={item.status}>{item.status}</option>
+                          <option value="Completed">Completed</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Cancel">Cancel</option>
+                          <option value="Active">Active</option>
+                        </select>
+                      </div>
+                    );
+                  })}
+                  {/* {sortedInterviews.length > 
                 ? renderSortedInterviews()
                 : renderUnsortedInterviews()} */}
+                </section>
               </section>
             </section>
-          </section>
-        </article>
+          </article>
+        </>
       );
     }
   }
