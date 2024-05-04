@@ -365,6 +365,7 @@ const InterviewListPage = () => {
                         <option value="Completed">Completed</option>
                         <option value="Pending">Pending</option>
                         <option value="Cancel">Cancel</option>
+                        <option value="Active">Active</option>
                       </select>
                     </div>
                   );
