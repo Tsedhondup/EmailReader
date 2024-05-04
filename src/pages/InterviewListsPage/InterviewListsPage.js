@@ -258,7 +258,7 @@ const InterviewListPage = () => {
         <>
           <div className={`follow-up ${followUpClass}`}>
             <h3 className="follo-up__header">Write follow up email</h3>
-            <Link to="/FollowUpEmailPage">
+            <Link to="/FollowUp">
               <button className="follow-up__button-continue">Continue</button>
             </Link>
             <button
