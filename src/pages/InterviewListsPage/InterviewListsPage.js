@@ -231,8 +231,12 @@ const InterviewListPage = () => {
     setInterviewLists(newInterviewList);
   };
 
-  const handleFollowUpEmail = () => {
-    // function for follow up email
+  const handleFollowUpEmail = (event) => {
+    if (event.target.value === "Completed") {
+      setFollowUpClass("display-show");
+    } else {
+      setFollowUpClass("");
+    }
   };
   useEffect(() => {
     getAllApplications();
@@ -257,7 +261,14 @@ const InterviewListPage = () => {
             <Link to="/FollowUpEmailPage">
               <button className="follow-up__button-continue">Continue</button>
             </Link>
-            <button className="follow-up__button-skip">skip</button>
+            <button
+              className="follow-up__button-skip"
+              onClick={(event) => {
+                handleFollowUpEmail(event);
+              }}
+            >
+              skip
+            </button>
           </div>
           <article className="interview-list-container">
             <section className="company-list-container">
