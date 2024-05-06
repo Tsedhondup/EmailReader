@@ -7,7 +7,7 @@ const FollowUpEmailPage = () => {
   const [subject, setSubject] = useState();
   const [sender, setSender] = useState();
   const [body, setBody] = useState();
-  const getAllApplications = () => {
+  const handleSendEmail = () => {
     axios
       .post(`${API_BASE_URL}sendEmail/${sessionStorage.getItem("profileId")}`, {
         headers: {
@@ -28,13 +28,14 @@ const FollowUpEmailPage = () => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          handleSendEmail();
         }}
       >
         <input type="text" placeholder="Sender" />
         <input type="text" placeholder="Recipient" />
         <input type="text" placeholder="Subject" />
         <textarea type="text" placeholder="Write your message" />
-        <button>Send</button>
+        <button type="submit">Send</button>
       </form>
     </>
   );
