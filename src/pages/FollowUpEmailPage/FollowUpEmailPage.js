@@ -40,19 +40,55 @@ const FollowUpEmailPage = () => {
         });
     }
   };
+  const handleGeneralError = () => {
+    if (!sender || !recipient || !subject || !body) {
+      setGeneralError("Please complete email form!");
+    } else {
+      setGeneralError("");
+    }
+  };
   return (
     <>
       <h2>New Message</h2>
+      <h3>{generalError}</h3>
       <form
         onSubmit={(event) => {
           event.preventDefault();
           handleSendEmail();
         }}
       >
-        <input type="text" placeholder="Sender" />
-        <input type="text" placeholder="Recipient" />
-        <input type="text" placeholder="Subject" />
-        <textarea type="text" placeholder="Write your message" />
+        <input
+          type="text"
+          placeholder="Sender"
+          value={sender}
+          onChange={(event) => {
+            setSender(event.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Recipient"
+          value={recipient}
+          onChange={(event) => {
+            setRecipient(event.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={(event) => {
+            setSubject(event.target.value);
+          }}
+        />
+        <textarea
+          type="text"
+          placeholder="Write your message"
+          value={body}
+          onChange={(event) => {
+            setBody(event.target.value);
+          }}
+        />
         <button type="submit">Send</button>
       </form>
     </>
