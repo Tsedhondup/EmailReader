@@ -7,6 +7,7 @@ const FollowUpEmailPage = () => {
   const [subject, setSubject] = useState();
   const [sender, setSender] = useState();
   const [body, setBody] = useState();
+  const [generalError, setGeneralError] = useState();
   const mail = {
     sender: sender,
     to_email: recipient,
@@ -15,20 +16,29 @@ const FollowUpEmailPage = () => {
     email_html: body,
   };
   const handleSendEmail = () => {
-    axios
-      .post(`${API_BASE_URL}sendEmail`, mail, {
-        headers: {
-          authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
-        },
-      })
-      .then((response) => {
-        // setApplications(response.data);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        // navigate("/Login");
-        console.log(err);
-      });
+    if (!sender || !recipient || !subject || !body) {
+      setGeneralError("Please complete email form!");
+    } else {
+      axios
+        .post(
+          `${API_BASE_URL}sendEmail`,
+          mail,
+
+          {
+            headers: {
+              authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+            },
+          }
+        )
+        .then((response) => {
+          // setApplications(response.data);
+          console.log(response.data);
+        })
+        .catch((err) => {
+          // navigate("/Login");
+          console.log(err);
+        });
+    }
   };
   return (
     <>
