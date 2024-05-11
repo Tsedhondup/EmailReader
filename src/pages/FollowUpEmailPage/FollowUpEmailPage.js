@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 const FollowUpEmailPage = () => {
   const API_BASE_URL = "http://localhost:8080/";
@@ -40,13 +40,7 @@ const FollowUpEmailPage = () => {
         });
     }
   };
-  const handleGeneralError = () => {
-    if (!sender || !recipient || !subject || !body) {
-      setGeneralError("Please complete email form!");
-    } else {
-      setGeneralError("");
-    }
-  };
+
   return (
     <>
       <h2>New Message</h2>
@@ -57,14 +51,7 @@ const FollowUpEmailPage = () => {
           handleSendEmail();
         }}
       >
-        <input
-          type="text"
-          placeholder="Sender"
-          value={sender}
-          onChange={(event) => {
-            setSender(event.target.value);
-          }}
-        />
+        <h3>{recipient ? "" : "Enter recipient email"}</h3>
         <input
           type="text"
           placeholder="Recipient"
@@ -73,6 +60,16 @@ const FollowUpEmailPage = () => {
             setRecipient(event.target.value);
           }}
         />
+        <h3>{sender ? "" : "Enter sender email"}</h3>
+        <input
+          type="text"
+          placeholder="Sender"
+          value={sender}
+          onChange={(event) => {
+            setSender(event.target.value);
+          }}
+        />
+        <h3>{subject ? "" : "Enter subject"}</h3>
         <input
           type="text"
           placeholder="Subject"
@@ -81,6 +78,7 @@ const FollowUpEmailPage = () => {
             setSubject(event.target.value);
           }}
         />
+        <h3>{body ? "" : "Enter your message"}</h3>
         <textarea
           type="text"
           placeholder="Write your message"
