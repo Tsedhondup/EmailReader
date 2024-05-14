@@ -12,6 +12,7 @@ const AddApplication = () => {
   const [position, setPosition] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [errorCode, setErrorCode] = useState("");
   // NPM DATE LIBRARY
   const [startDate, setStartDate] = useState(new Date());
 
@@ -126,7 +127,7 @@ const AddApplication = () => {
           <button
             className="form-button-container__cancel"
             onClick={() => {
-              navigate("/applicationLists");
+              navigate("/applicationLists");  
             }}
           >
             Cancel
