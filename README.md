@@ -1,70 +1,88 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Job Application Tracker
 
-## Available Scripts
+Simple and easy-to-use web application for tracking and managing multiple job applications by 
+reading mails from your email client. (Currently support Gmail ONLY!)
 
-In the project directory, you can run:
+This particular repository is an API for front-end project Please visit- [TseDhondup](https://github.com/Tsedhondup/job-application-tracker)
 
-### `npm start`
+The app is designed and made for personal use to track and manage job applications. It will help 
+ease the load of weight to remember a couple dozen job applications by collectively putting in 
+the organized dashboard that is simple yet easy to use.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Currently, the App is designed to be used only by the author. To able to be used by the general 
+public, it will require additional skills that are beyond the scope of the author's knowledge.
+The app will require personal data to create an account which brings the question of security. 
+Therefore, this app will be limited to the author until the app acquires all security features for 
+protecting personal data. However, making it accessible to the general public is being planned 
+in later Phases of the project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Acknowledgements
 
-### `npm run build`
+ - [BrainStation](https://brainstation.io/?utm_keyword=brainstation&utm_network=g&utm_matchtype=e&utm_creative=482909840077&utm_target=&utm_placement=&utm_device=c&utm_campaign=11729367083&utm_adgroup=116579479809&utm_source=AdWords&utm_target_id=kwd-296950415241&gad_source=1&gclid=CjwKCAiAiP2tBhBXEiwACslfnm6ei3HVAKqqaSilroeKqbfSP3vlprCfrnn8asaVBRJazdkE11pgwhoCBGQQAvD_BwE)
+ - [Awesome README](https://github.com/matiassingers/awesome-readme)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Authors
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [TseDhondup](https://github.com/Tsedhondup)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Create account
+- Sign in and Sign out
+- custom authentication and authorization
+- Retrieve email from mail server
+- Read email
+- Parse mail data
+- Render email body in client server 
+- Add email 
+- Schedule interview 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 About Me
+I'm a full stack developer...
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Tech Stack
 
-### Analyzing the Bundle Size
+**Client:** React, SASS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Installation
 
-### Advanced Configuration
+Install my-project with npm
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  cd job-application-tracker
+```
+Install dependencies with npm
+```bash
+  npm install
+```
+start React server
+```bash
+  npm start
+```
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Lessons Learned
+
+- Using external packages such as IMAP(Internet Message Access Protocol) for retrieving email from the mail server was the single biggest huddle of this project. Because It required skills that are beyond the scope of my knowledge. 
+
+- Designing and setting up the database were done poorly, which resulted in the need for frequent changes during the development of the front-end. What was initially planned for sending data structure was insufficient and did not meet the requirement of client app functionality. Having to make changes in such a situation significantly slowed the pace of my development. Some features had to be completed in the later phase of this project.
+
+
+

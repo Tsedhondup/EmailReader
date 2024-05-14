@@ -1,0 +1,110 @@
+.zero-applications {
+  padding: 40px 32px;
+  &__header {
+    color: #81b29a;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  &__message {
+    color: #e07a5f;
+    text-align: center;
+  }
+
+  &__link {
+    display: block;
+    width: 200px;
+    margin: 40px auto;
+    &--button {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      height: 50px;
+      width: 100%;
+      color: #81b29a;
+      background-color: #f4f1de;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #f4f1de;
+      outline-width: 0px;
+    }
+  }
+}
+
+.application-table {
+  padding: 40px 32px;
+
+  // HEADER
+  &__header {
+    color: #81b29a;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  &__item-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+    color: #f4f1de;
+    text-transform: uppercase;
+    font-size: 13px;
+    &--company-name {
+      font-weight: normal;
+    }
+    &--position {
+      font-weight: normal;
+    }
+    &--date {
+      font-weight: normal;
+    }
+    &--time {
+      text-align: right;
+      font-weight: normal;
+    }
+  }
+  &__item {
+    &--link {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      text-decoration: none;
+      padding: 10px;
+      background-color: #f4f1de;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      transition: 0.2s;
+    }
+    &--link:hover {
+      background-color: #e07a5f;
+      .company-name,
+      .position,
+      .date,
+      .time {
+        color: #f4f1de;
+        font-weight: bold;
+      }
+    }
+    .company-name {
+      font-size: 18px;
+      color: #e07a5f;
+    }
+    .position {
+      font-size: 16px;
+      color: #81b29a;
+      font-weight: normal;
+    }
+    .date {
+      font-size: 16px;
+      color: #81b29a;
+      font-weight: normal;
+    }
+    .time {
+      font-size: 16px;
+      text-align: right;
+      color: #81b29a;
+      font-weight: normal;
+    }
+    .status-options-container {
+      height: 100%;
+    }
+  }
+}

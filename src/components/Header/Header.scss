@@ -1,0 +1,79 @@
+.header-log-out {
+  background-color: #f4f1de;
+  color: #e07a5f;
+  text-align: center;
+  padding: 30px 16px;
+  &__app-name {
+    text-transform: uppercase;
+    font-size: 40px;
+    text-decoration: none;
+  }
+  &__app-name:hover {
+    color: #3d405b;
+  }
+}
+
+.header-log-in {
+  background-color: #f4f1de;
+  color: #e07a5f;
+  padding: 30px 16px;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // max-width: 1040px;
+    // margin: auto;
+  }
+
+  .app-logo {
+    &__link {
+      text-decoration: none;
+      color: #e07a5f;
+
+      &--text {
+        text-transform: capitalize;
+        font-size: 24px;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+      }
+    }
+    &__link:hover {
+      color: #3d405b;
+    }
+  }
+  .page-link-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    // Add application
+    &__applications,
+    &__interviews,
+    &__profile,
+    &__add-interviews,
+    &__add-application,
+    &__sign-out {
+      text-decoration: none;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #e07a5f;
+      cursor: pointer;
+    }
+    &__applications:hover,
+    &__interviews:hover,
+    &__add-interviews:hover,
+    &__add-application:hover,
+    &__sign-out:hover {
+      color: #3d405b;
+    }
+    &__profile {
+      background-color: #81b29a;
+      color: #f4f1de;
+      border-radius: 4px;
+      padding: 5px;
+    }
+    &__profile:hover {
+      background-color: #3d405b;
+    }
+  }
+}

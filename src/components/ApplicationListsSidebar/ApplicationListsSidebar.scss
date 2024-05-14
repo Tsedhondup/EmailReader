@@ -1,0 +1,23 @@
+.sidebar {
+  background-color: #f4f1de;
+  &__active-company {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    background-color: #e07a5f;
+    color: #f4f1de;
+    font-size: 20px;
+  }
+  &__company {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    background-color: #f4f1de;
+    color: #3d405b;
+    font-size: 20px;
+  }
+  &__company:hover {
+    background-color: #e07a5f;
+    color: #f4f1de;
+  }
+}

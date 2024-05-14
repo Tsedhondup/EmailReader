@@ -1,0 +1,121 @@
+// FOLLOW-UP EMAIL
+.follow-up {
+  display: none;
+}
+.display-show {
+  display: block;
+}
+.interview-list-container {
+  display: flex;
+}
+// LISTS CONTAINER
+.company-list-container {
+  background-color: #f4f1de;
+  &__company {
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    background-color: #f4f1de;
+    color: #3d405b;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  &__company:hover {
+    background-color: #e07a5f;
+    color: #f4f1de;
+  }
+}
+// DATA CONTAINER
+.interview-data-container {
+  margin: 50px auto;
+  max-width: 1040px;
+}
+.interview-header-data-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #f4f1de;
+  padding: 16px;
+  border-radius: 8px;
+
+  &__header {
+    color: #81b29a;
+    font-size: 22px;
+  }
+  &__analytics {
+    &--data {
+      color: #f4f1de;
+      font-weight: normal;
+    }
+  }
+}
+
+// INTERVIEW LIST TABLE CONTAINER
+.interview-table-container {
+  margin-top: 50px;
+  &__headers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 30px;
+    color: #f4f1de;
+    margin-bottom: 16px;
+    &--name {
+      font-weight: normal;
+    }
+  }
+  &__data {
+    &--item {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 30px;
+      text-decoration: none;
+      padding: 10px;
+      background-color: #f4f1de;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      transition: 0.2s;
+    }
+    // &--item:hover {
+    //   background-color: #e07a5f;
+    //   .change-button {
+    //     // background-color: #f4f1de;
+    //     color: #3d405b;
+    //   }
+    //   .interview-table-data {
+    //     color: #f4f1de;
+    //   }
+    // }
+    .interview-table-data {
+      color: #3d405b;
+    }
+    .change-button {
+      width: 100px;
+      padding: 4px 0px;
+      border-radius: 4px;
+      outline-width: 0px;
+      color: #f4f1de;
+      border: solid 1px #e07a5f;
+      background-color: #e07a5f;
+    }
+    // Change button and date picker dynamic :no-button
+    .display-show {
+      display: block;
+    }
+    .display-hidden {
+      display: none;
+    }
+  }
+}
+.interview-loader {
+  color: #f4f1de;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+
+/*
+ antique white : #f4f1de 
+ terra cotta: #E07A5F,
+ slate blue: #3d405b
+ muted sage green: 81B29A
+
+ */
+   

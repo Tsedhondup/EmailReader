@@ -1,0 +1,110 @@
+.application-detail {
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid #f4f1de;
+
+  &__data-container {
+    padding: 16px 32px;
+    background-color: #3d405b;
+    margin: auto;
+    margin-top: 26px;
+  }
+
+  // APPLICATION DATA
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    margin-bottom: 32px;
+    border: 1px solid #f4f1de;
+    border-radius: 4px;
+  }
+  &__about {
+    &--company-name {
+      font-size: 25px;
+      color: #f4f1de;
+      margin-bottom: 16px;
+    }
+    &--position-header {
+      color: #81b29a;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    &--position {
+      color: #f4f1de;
+      font-weight: normal;
+    }
+  }
+
+  // APPLICATION HISTORY AND EMAIL TABLE
+  &__application-history {
+    width: 100%;
+  }
+  &__email-table-header {
+    color: #f4f1de;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    &--fetch-new-button {
+      background-color: #f4f1de;
+      color: #3d405b;
+      padding: 4px 16px;
+      outline-width: 0px;
+      text-transform: uppercase;
+      font-size: 13px;
+      border-radius: 4px;
+      border: 1px solid #f4f1de;
+    }
+    &--fetch-new-button:hover {
+      background-color: #e07a5f;
+      color: #f4f1de;
+      border: 1px solid #e07a5f;
+    }
+  }
+  .email-table-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 16px;
+    grid-gap: 50px;
+    color: #f4f1de;
+  }
+  .emails {
+    &__content {
+      display: flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      transition: 0.2s;
+      color: #81b29a;
+      background-color: #f4f1de;
+    }
+    &__email-item {
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 50px;
+
+      &--subject {
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #e07a5f;
+        font-weight: bold;
+      }
+      &--date,
+      &--time {
+        color: #3d405b;
+      }
+    }
+  }
+}
+
+/*
+ antique white : #f4f1de 
+ terra cotta: #E07A5F,
+ slate blue: #3d405b
+ muted sage green: 81B29A
+
+ */
