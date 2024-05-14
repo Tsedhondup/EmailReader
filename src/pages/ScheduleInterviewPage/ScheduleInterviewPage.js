@@ -12,6 +12,7 @@ const ScheduleInterviewPage = () => {
   const [companyName, setCompanyName] = useState("");
   const [about, setAbout] = useState("");
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isFormCompleted, setIsFormCompleted] = useState(false);
 
   const navigate = useNavigate();
 
@@ -48,6 +49,9 @@ const ScheduleInterviewPage = () => {
         navigate("/Login");
         console.log(err.message);
       });
+  };
+  const handleValidation = () => {
+    // this function handles form validation
   };
   useEffect(() => {
     axios

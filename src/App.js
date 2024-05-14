@@ -15,6 +15,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import FollowUpEmailPage from "./pages/FollowUpEmailPage/FollowUpEmailPage";
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
           <Route path="/SignUp" element={<SignUpPage />} />
           <Route path="/About" element={<AboutPage />} />
           <Route path="/Contact" element={<ContactPage />} />
+          <Route path="/FollowUp" element={<FollowUpEmailPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
